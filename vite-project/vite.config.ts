@@ -7,6 +7,6 @@ export default defineConfig({
   // Base path for GitHub Pages
   // Repository: anastasiialukianenko/Ai-trust
   // So the base should be '/Ai-trust/'
-  base: process.env.GITHUB_PAGES_BASE || '/Ai-trust/',
+  base: process.env.GITHUB_PAGES_BASE || process.env.VITE_BASE_PATH || '/Ai-trust/',
 })
 

@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -39,6 +39,7 @@ jobs:
         env:
           # Set base path for repository: anastasiialukianenko/Ai-trust
           GITHUB_PAGES_BASE: '/Ai-trust/'
+          VITE_BASE_PATH: '/Ai-trust/'
           # Google Apps Script URL from GitHub Secrets
           VITE_GOOGLE_APPS_SCRIPT_URL: ${{ secrets.VITE_GOOGLE_APPS_SCRIPT_URL }}
 
