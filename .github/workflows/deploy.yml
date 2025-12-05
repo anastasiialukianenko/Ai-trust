@@ -41,7 +41,7 @@ jobs:
           GITHUB_PAGES_BASE: '/Ai-trust/'
           VITE_BASE_PATH: '/Ai-trust/'
           # Google Apps Script URL from GitHub Secrets
-          VITE_GOOGLE_APPS_SCRIPT_URL: ${{ secrets.VITE_GOOGLE_APPS_SCRIPT_URL }}
+          VITE_GOOGLE_APPS_SCRIPT_URL_New: ${{ secrets.VITE_GOOGLE_APPS_SCRIPT_URL_New }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

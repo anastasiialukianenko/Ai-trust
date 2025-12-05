@@ -4,7 +4,7 @@ import type { ExperimentData } from '../types/experiment';
  * Configuration for Google Apps Script endpoint
  * Replace with your actual Google Apps Script web app URL
  */
-const GOOGLE_APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '';
+const GOOGLE_APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL_New || '';
 
 /**
  * Posts experiment data to Google Apps Script endpoint
@@ -22,7 +22,7 @@ export async function submitExperimentData(data: ExperimentData): Promise<void> 
   console.log('📊 Data being submitted:', JSON.stringify(data, null, 2));
 
   try {
-    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors', // Required for Google Apps Script
       headers: {
