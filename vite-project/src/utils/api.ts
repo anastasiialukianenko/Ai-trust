@@ -4,7 +4,7 @@ import type { ExperimentData } from '../types/experiment';
  * Configuration for Google Apps Script endpoint
  * Replace with your actual Google Apps Script web app URL
  */
-const GOOGLE_APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL_New || '';
+const GOOGLE_APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL_NEW || '';
 
 /**
  * Posts experiment data to Google Apps Script endpoint
