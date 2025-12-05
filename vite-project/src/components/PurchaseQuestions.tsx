@@ -71,6 +71,7 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
     <div style={{
       maxWidth: '800px',
       margin: '0 auto',
+      padding: '2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
       <h1>Purchase Questions</h1>

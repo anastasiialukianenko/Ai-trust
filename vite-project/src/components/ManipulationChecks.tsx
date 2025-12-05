@@ -36,7 +36,7 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
 
       {/* Question 1: Perceived Author */}
       <div style={{
-        marginBottom: '2rem',
+        marginBottom: '1rem',
         padding: '1.5rem',
         backgroundColor: '#f9f9f9',
         borderRadius: '8px'
