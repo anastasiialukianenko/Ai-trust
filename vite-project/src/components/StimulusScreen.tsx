@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { ScreenProps } from '../types/experiment';
 import InstaPost from './InstaPost';
 
-const StimulusScreen: React.FC<ScreenProps> = ({ onNext, data, setData, condition }) => {
+const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) => {
   const [startTime] = useState<number>(performance.now());
   const [minViewTimeElapsed, setMinViewTimeElapsed] = useState<boolean>(false);
   const MIN_VIEW_TIME_MS = 6000; // 6 seconds
@@ -41,28 +41,28 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, data, setData, conditio
         // Human ad - no disclosure
         return {
           imageSrc: '/api/placeholder/400/400', // Replace with actual image URL
-          caption: 'Discover amazing products! Experience the future of shopping with our innovative collection. Limited time offer!',
+          caption: '',
           showDisclosure: false,
         };
       case 2:
         // AI ad - no disclosure
         return {
           imageSrc: '/api/placeholder/400/400', // Replace with actual image URL
-          caption: 'Discover amazing products! Experience the future of shopping with our innovative collection. Limited time offer!',
+          caption: '',
           showDisclosure: false,
         };
       case 3:
         // AI ad - with disclosure
         return {
           imageSrc: '/api/placeholder/400/400', // Replace with actual image URL
-          caption: 'Discover amazing products! Experience the future of shopping with our innovative collection. Limited time offer!',
+          caption: '',
           showDisclosure: true,
-          disclosureText: 'Created with AI tools',
+          disclosureText: 'AI info',
         };
       default:
         return {
           imageSrc: '/api/placeholder/400/400',
-          caption: 'Discover amazing products!',
+          caption: '',
           showDisclosure: false,
         };
     }

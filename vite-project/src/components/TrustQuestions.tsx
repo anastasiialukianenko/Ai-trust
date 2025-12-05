@@ -5,20 +5,24 @@ const TrustQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
   const [cog1, setCog1] = useState<number>(data.trust?.cog1 || 0);
   const [cog2, setCog2] = useState<number>(data.trust?.cog2 || 0);
   const [cog3, setCog3] = useState<number>(data.trust?.cog3 || 0);
+  const [cog4, setCog4] = useState<number>(data.trust?.cog4 || 0);
   const [aff1, setAff1] = useState<number>(data.trust?.aff1 || 0);
   const [aff2, setAff2] = useState<number>(data.trust?.aff2 || 0);
   const [aff3, setAff3] = useState<number>(data.trust?.aff3 || 0);
+  const [aff4, setAff4] = useState<number>(data.trust?.aff4 || 0);
 
   const cognitiveItems = [
-    { id: 'cog1', label: 'This brand is reliable', value: cog1, setValue: setCog1 },
-    { id: 'cog2', label: 'This brand is accurate', value: cog2, setValue: setCog2 },
-    { id: 'cog3', label: 'This brand is professional', value: cog3, setValue: setCog3 },
+    { id: 'cog1', label: 'This advertisement provides accurate information about the product', value: cog1, setValue: setCog1 },
+    { id: 'cog2', label: 'I can rely on this advertisement as a source of product information.', value: cog2, setValue: setCog2 },
+    { id: 'cog3', label: 'This advertisement helps me understand what the product is like.', value: cog3, setValue: setCog3 },
+    { id: 'cog4', label: 'Overall, this advertisement is useful for deciding whether the product is right for me.', value: cog4, setValue: setCog4 },
   ];
 
   const affectiveItems = [
-    { id: 'aff1', label: 'This brand is honest', value: aff1, setValue: setAff1 },
-    { id: 'aff2', label: 'This brand has my best interests at heart', value: aff2, setValue: setAff2 },
-    { id: 'aff3', label: 'This brand is sincere and not manipulative', value: aff3, setValue: setAff3 },
+    { id: 'aff1', label: 'This advertisement seems honest.', value: aff1, setValue: setAff1 },
+    { id: 'aff2', label: 'This advertisement presents the product in a fair way.', value: aff2, setValue: setAff2 },
+    { id: 'aff3', label: 'This advertisement seems to have consumers’ best interests in mind.', value: aff3, setValue: setAff3 },
+    { id: 'aff4', label: 'This advertisement feels respectful toward people like me.', value: aff4, setValue: setAff4 },
   ];
 
   const handleSubmit = () => {
@@ -28,28 +32,32 @@ const TrustQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
         cog1,
         cog2,
         cog3,
+        cog4,
         aff1,
         aff2,
         aff3,
+        aff4,
       },
     });
     onNext('purchase');
   };
 
-  const allAnswered = cog1 > 0 && cog2 > 0 && cog3 > 0 && aff1 > 0 && aff2 > 0 && aff3 > 0;
+  const allAnswered = cog1 > 0 && cog2 > 0 && cog3 > 0 && cog4 > 0 && aff1 > 0 && aff2 > 0 && aff3 > 0 && aff4 > 0;
 
   const renderLikertItem = (item: { id: string; label: string; value: number; setValue: (val: number) => void }) => (
     <div key={item.id} style={{
-      marginBottom: '2rem',
-      padding: '1.5rem',
+      marginBottom: '1.5rem',
+      padding: '0.5rem',
       backgroundColor: '#f9f9f9',
       borderRadius: '8px'
     }}>
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{item.label}</p>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Disagree</span>
-        {[1, 2, 3, 4, 5, 6, 7].map((score) => (
-          <label key={score} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'left'}}>Strongly Disagree</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>Strongly Agree</span>
+      </div>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
+          <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
             <input
               type="radio"
               name={item.id}
@@ -61,7 +69,6 @@ const TrustQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
             <span>{score}</span>
           </label>
         ))}
-        <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Agree</span>
       </div>
     </div>
   );

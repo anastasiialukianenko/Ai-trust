@@ -18,21 +18,18 @@ const InstaPost: React.FC<InstaPostProps> = ({
     <div className="insta-post">
       {/* Header */}
       <div className="insta-post-header">
-        <div className="insta-avatar">BR</div>
+        <div className="insta-avatar">SS</div>
         <div className="insta-header-text">
-          <div className="insta-username">brand_name</div>
-          <div className="insta-sponsored">Sponsored</div>
+          <div className="insta-username">step_sense</div>
+          {showDisclosure && (
+            <div className="insta-sponsored">{disclosureText}</div>
+          )}
         </div>
       </div>
 
       {/* Image */}
       <div className="insta-image-container">
         <img src={imageSrc} alt="Advertisement" className="insta-image" />
-        {showDisclosure && (
-          <div className="insta-disclosure">
-            {disclosureText}
-          </div>
-        )}
       </div>
 
       {/* Icons Row */}
@@ -45,7 +42,7 @@ const InstaPost: React.FC<InstaPostProps> = ({
 
       {/* Caption */}
       <div className="insta-caption">
-        <span className="insta-caption-username">brand_name</span>
+        <span className="insta-caption-username">step_sense</span>
         <span className="insta-caption-text">{caption}</span>
       </div>
 

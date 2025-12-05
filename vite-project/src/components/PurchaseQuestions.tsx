@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import type { ScreenProps } from '../types/experiment';
 
 const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
-  const [pi1, setPi1] = useState<number>(data.purchase?.pi1 || 0);
-  const [pi2, setPi2] = useState<number>(data.purchase?.pi2 || 0);
-  const [pi3, setPi3] = useState<number>(data.purchase?.pi3 || 0);
-  const [pi4, setPi4] = useState<number>(data.purchase?.pi4 || 0);
-  const [wtp, setWtp] = useState<number>(data.purchase?.wtp || 0.50);
+    const [pi1, setPi1] = useState<number>(data.purchase?.pi1 || 0);
+    const [pi2, setPi2] = useState<number>(data.purchase?.pi2 || 0);
+    const [pi3, setPi3] = useState<number>(data.purchase?.pi3 || 0);
+
+    const [wtp1, setWtp1] = useState<number>(data.purchase?.wtp1 || 0);
+    const [wtp2, setWtp2] = useState<number>(data.purchase?.wtp2 || 0);
+    const [wtp3, setWtp3] = useState<number>(data.purchase?.wtp3 || 0);
+    const [wtp4, setWtp4] = useState<number>(data.purchase?.wtp4 || 0);
 
   const purchaseIntentionItems = [
-    { id: 'pi1', label: 'I would consider buying this product', value: pi1, setValue: setPi1 },
-    { id: 'pi2', label: 'I would like to try this product', value: pi2, setValue: setPi2 },
-    { id: 'pi3', label: 'I am likely to purchase this product', value: pi3, setValue: setPi3 },
-    { id: 'pi4', label: 'I would recommend this product to others', value: pi4, setValue: setPi4 },
+    { id: 'pi1', label: 'I would seriously consider buying this product.', value: pi1, setValue: setPi1 },
+    { id: 'pi2', label: 'I am likely to buy this product in the near future.', value: pi2, setValue: setPi2 },
+    { id: 'pi3', label: 'If I needed a product like this, I would choose this one.', value: pi3, setValue: setPi3 },
+    { id: 'wtp1', label: 'I would be willing to pay the typical price for this product.', value: wtp1, setValue: setWtp1 },
+    { id: 'wtp2', label: 'Based on the advertisement, I would be willing to pay a higher price for this product compared to alternatives.', value: wtp2, setValue: setWtp2 },
+    { id: 'wtp3', label: 'I feel comfortable paying the suggested price for this product.', value: wtp3, setValue: setWtp3 },
   ];
 
   const handleSubmit = () => {
@@ -22,27 +27,31 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
         pi1,
         pi2,
         pi3,
-        pi4,
-        wtp: parseFloat(wtp.toFixed(2)),
+        wtp1,
+        wtp2,
+        wtp3,
+        wtp4: parseFloat(wtp4.toFixed(2)),
       },
     });
     onNext('manipChecks');
   };
 
-  const allAnswered = pi1 > 0 && pi2 > 0 && pi3 > 0 && pi4 > 0 && wtp > 0;
+  const allAnswered = pi1 > 0 && pi2 > 0 && pi3 > 0 && wtp1 > 0 && wtp2 > 0 && wtp3 > 0 && wtp4 > 0;
 
   const renderLikertItem = (item: { id: string; label: string; value: number; setValue: (val: number) => void }) => (
     <div key={item.id} style={{
-      marginBottom: '2rem',
-      padding: '1.5rem',
+      marginBottom: '1.5rem',
+      padding: '0.5rem',
       backgroundColor: '#f9f9f9',
       borderRadius: '8px'
     }}>
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{item.label}</p>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Disagree</span>
-        {[1, 2, 3, 4, 5, 6, 7].map((score) => (
-          <label key={score} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px' }}>Strongly Disagree</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>Strongly Agree</span>
+      </div>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
+          <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
             <input
               type="radio"
               name={item.id}
@@ -54,7 +63,6 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
             <span>{score}</span>
           </label>
         ))}
-        <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Agree</span>
       </div>
     </div>
   );
@@ -63,7 +71,6 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
     <div style={{
       maxWidth: '800px',
       margin: '0 auto',
-      padding: '2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
       <h1>Purchase Questions</h1>
@@ -81,32 +88,31 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
 
       <div style={{
         marginBottom: '2rem',
-        padding: '1.5rem',
         backgroundColor: '#f9f9f9',
         borderRadius: '8px'
       }}>
         <h2 style={{ fontSize: '18px', marginBottom: '1rem', color: '#333' }}>Willingness to Pay</h2>
         <p style={{ marginBottom: '1rem', color: '#666' }}>
-          Similar products usually cost <strong>1.50 EUR</strong>.
+          Similar products usually cost <strong>70 EUR</strong>.
         </p>
         <p style={{ marginBottom: '1.5rem', color: '#666' }}>
           How much would you be willing to pay for this product?
         </p>
         <div style={{ marginBottom: '1rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '14px', color: '#666' }}>0.50 EUR</span>
+            <span style={{ fontSize: '14px', color: '#666' }}>0 EUR</span>
             <span style={{ fontSize: '16px', fontWeight: 'bold', color: '#007bff' }}>
-              {wtp.toFixed(2)} EUR
+              {wtp4} EUR
             </span>
-            <span style={{ fontSize: '14px', color: '#666' }}>3.00 EUR</span>
+            <span style={{ fontSize: '14px', color: '#666' }}>3000 EUR</span>
           </div>
           <input
             type="range"
-            min="0.50"
-            max="3.00"
-            step="0.10"
-            value={wtp}
-            onChange={(e) => setWtp(parseFloat(e.target.value))}
+            min="0.00"
+            max="3000.00"
+            step="10"
+            value={wtp4}
+            onChange={(e) => setWtp4(parseFloat(e.target.value))}
             style={{
               width: '100%',
               height: '8px',
@@ -120,14 +126,14 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <input
             type="number"
-            min="0.50"
-            max="3.00"
-            step="0.10"
-            value={wtp.toFixed(2)}
+            min="0"
+            max="3000"
+            step="100"
+            value={wtp4}
             onChange={(e) => {
               const val = parseFloat(e.target.value);
-              if (!isNaN(val) && val >= 0.50 && val <= 3.00) {
-                setWtp(val);
+              if (!isNaN(val) && val >= 0 && val <= 3000) {
+                setWtp4(val);
               }
             }}
             style={{

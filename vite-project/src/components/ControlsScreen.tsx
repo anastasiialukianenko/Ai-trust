@@ -31,15 +31,17 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
   const renderLikertItem = (item: { id: string; label: string; value: number; setValue: (val: number) => void }) => (
     <div key={item.id} style={{
       marginBottom: '2rem',
-      padding: '1.5rem',
+      padding: '0.5rem',
       backgroundColor: '#f9f9f9',
       borderRadius: '8px'
     }}>
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{item.label}</p>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Disagree</span>
-        {[1, 2, 3, 4, 5, 6, 7].map((score) => (
-          <label key={score} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'left'}}>Strongly Disagree</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>Strongly Agree</span>
+      </div>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
+          <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
             <input
               type="radio"
               name={item.id}
@@ -51,10 +53,8 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
             <span>{score}</span>
           </label>
         ))}
-        <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Agree</span>
-      </div>
-    </div>
-  );
+      </div></div>
+    );
 
   return (
     <div style={{

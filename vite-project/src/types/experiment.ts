@@ -15,19 +15,24 @@ export type Step =
 
 export interface TrustData {
   cog1?: number; // reliable
-  cog2?: number; // accurate
-  cog3?: number; // professional
+  cog2?: number; // reliable
+  cog3?: number; // functional
+  cog4?: number; // helpful
   aff1?: number; // honest
-  aff2?: number; // has my best interests at heart
-  aff3?: number; // sincere/not manipulative
+  aff2?: number; // fair
+  aff3?: number; // beneficial
+  aff4?: number; // respectful
 }
 
 export interface PurchaseData {
-  pi1?: number; // I would consider buying this product
-  pi2?: number; // I would like to try this product
-  pi3?: number; // I am likely to purchase this product
-  pi4?: number; // I would recommend this product to others
-  wtp?: number; // Willingness to pay (in EUR)
+  pi1?: number; 
+  pi2?: number; 
+  pi3?: number; 
+  pi4?: number; 
+  wtp1?: number; 
+  wtp2?: number; 
+  wtp3?: number; 
+  wtp4?: number; 
 }
 
 export interface ManipChecks {

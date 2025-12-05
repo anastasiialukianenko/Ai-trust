@@ -48,7 +48,7 @@ const ConsentScreen: React.FC<ConsentScreenProps> = ({ onAgree }) => {
       <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
         <p>
           You are invited to participate in a research study about consumer behavior and technology.
-          This study will take approximately 10-15 minutes to complete.
+          This study will take approximately 8 minutes to complete.
         </p>
         <h2>What you will do:</h2>
         <ul>

@@ -5,9 +5,7 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
   const [answer, setAnswer] = useState<number>(0);
 
   const handleSubmit = () => {
-    // Check if user selected "Agree" (assuming 7 is "Strongly Agree" and we want them to select a high value)
-    // Actually, the instruction says to select "Agree", so let's check if they selected 6 or 7
-    const passed = answer >= 6; // 6 or 7 would be "Agree" or "Strongly Agree"
+    const passed = answer === 5; 
     
     setData({
       ...data,
@@ -29,18 +27,20 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
     }}>
       <h1>Attention Check</h1>
       <div style={{
-        marginBottom: '2rem',
-        padding: '1.5rem',
+        marginBottom: '1.5rem',
+        padding: '0.5rem',
         backgroundColor: '#f9f9f9',
         borderRadius: '8px'
       }}>
         <p style={{ marginBottom: '1rem', fontWeight: '500', fontSize: '16px' }}>
-          To show that you are paying attention, please select "Agree" for this statement.
+          To show that you are paying attention, please select number "5" for this statement.
         </p>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', marginTop: '1.5rem' }}>
-          <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Disagree</span>
-          {[1, 2, 3, 4, 5, 6, 7].map((score) => (
-            <label key={score} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
+          <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'left'}}>Strongly Disagree</span>
+          <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>Strongly Agree</span>
+        </div>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
+            <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
               <input
                 type="radio"
                 name="attentionCheck"
@@ -52,7 +52,6 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
               <span>{score}</span>
             </label>
           ))}
-          <span style={{ fontSize: '14px', color: '#666', minWidth: '120px' }}>Strongly Agree</span>
         </div>
       </div>
       <button

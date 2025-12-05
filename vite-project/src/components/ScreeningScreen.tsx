@@ -21,9 +21,8 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
   const genderOptions = [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' },
-    { value: 'nonBinary', label: 'Non-binary' },
-    { value: 'preferNotToSay', label: 'Prefer not to say' },
     { value: 'other', label: 'Other' },
+    { value: 'preferNotToSay', label: 'Prefer not to say' },
   ];
 
   const socialMediaOptions = [
