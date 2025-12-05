@@ -41,7 +41,6 @@ export interface ManipChecks {
 }
 
 export interface Controls {
-  willingnessToPay: number;
   socialMediaFreq?: string;
   attitudeAI1?: number; // Overall, I feel positive about artificial intelligence
   attitudeAI2?: number; // I trust AI systems to make good decisions

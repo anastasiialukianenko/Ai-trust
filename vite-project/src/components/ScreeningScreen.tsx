@@ -84,7 +84,6 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
       controls: {
         ...prev.controls,
         socialMediaFreq: socialMediaFreq,
-        willingnessToPay: prev.controls?.willingnessToPay || 0,
       },
     }));
     onNext('stimulus');

@@ -10,7 +10,6 @@ export function initialData(condition: Condition): ExperimentData {
     purchase: {},
     manipulationChecks: {},
     controls: {
-      willingnessToPay: 0,
     },
     demographics: {},
     qc: {},

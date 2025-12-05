@@ -17,7 +17,6 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
       ...data,
       controls: {
         ...data.controls,
-        willingnessToPay: data.controls?.willingnessToPay || 0,
         attitudeAI1,
         attitudeAI2,
         attitudeAI3,
