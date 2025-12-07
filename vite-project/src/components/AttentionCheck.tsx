@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
-const AttentionCheck: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+const AttentionCheck: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }) => {
   const { t } = useTranslation();
-  const [answer, setAnswer] = useState<number>(0);
+  const [answer, setAnswer] = useState<number>(
+    data.qc?.attentionCheckAnswer ? parseInt(data.qc.attentionCheckAnswer) : 0
+  );
 
-  const handleSubmit = () => {
+  const saveData = () => {
     const passed = answer === 5; 
     
     setData({
@@ -17,7 +19,16 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
         attentionCheckPassed: passed,
       },
     });
+  };
+
+  const handleSubmit = () => {
+    saveData();
     onNext('debrief');
+  };
+
+  const handleBack = () => {
+    saveData();
+    onBack?.();
   };
 
   return (
@@ -59,24 +70,41 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
           ))}
         </div>
       </div>
-      <button
-        onClick={handleSubmit}
-        disabled={answer === 0}
-        style={{
-          padding: '12px 32px',
-          fontSize: '16px',
-          backgroundColor: answer > 0 ? '#007bff' : '#ccc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: answer > 0 ? 'pointer' : 'not-allowed',
-          fontWeight: 'bold',
-          display: 'block',
-          margin: '0 auto'
-        }}
-      >
-        {t('common.continue')}
-      </button>
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+        {onBack && (
+          <button
+            onClick={handleBack}
+            style={{
+              padding: '12px 32px',
+              fontSize: '16px',
+              backgroundColor: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            {t('common.back')}
+          </button>
+        )}
+        <button
+          onClick={handleSubmit}
+          disabled={answer === 0}
+          style={{
+            padding: '12px 32px',
+            fontSize: '16px',
+            backgroundColor: answer > 0 ? '#007bff' : '#ccc',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: answer > 0 ? 'pointer' : 'not-allowed',
+            fontWeight: 'bold'
+          }}
+        >
+          {t('common.continue')}
+        </button>
+      </div>
     </div>
   );
 };

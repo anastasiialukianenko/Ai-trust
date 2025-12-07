@@ -35,12 +35,69 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
     { value: 'never', label: t('screening.socialMediaOptions.never') },
   ];
 
+  const countryOptions = [
+    { value: 'US', label: 'United States' },
+    { value: 'GB', label: 'United Kingdom' },
+    { value: 'CA', label: 'Canada' },
+    { value: 'AU', label: 'Australia' },
+    { value: 'DE', label: 'Germany' },
+    { value: 'FR', label: 'France' },
+    { value: 'IT', label: 'Italy' },
+    { value: 'ES', label: 'Spain' },
+    { value: 'NL', label: 'Netherlands' },
+    { value: 'BE', label: 'Belgium' },
+    { value: 'CH', label: 'Switzerland' },
+    { value: 'AT', label: 'Austria' },
+    { value: 'SE', label: 'Sweden' },
+    { value: 'NO', label: 'Norway' },
+    { value: 'DK', label: 'Denmark' },
+    { value: 'FI', label: 'Finland' },
+    { value: 'PL', label: 'Poland' },
+    { value: 'CZ', label: 'Czech Republic' },
+    { value: 'SK', label: 'Slovakia' },
+    { value: 'HU', label: 'Hungary' },
+    { value: 'RO', label: 'Romania' },
+    { value: 'BG', label: 'Bulgaria' },
+    { value: 'GR', label: 'Greece' },
+    { value: 'PT', label: 'Portugal' },
+    { value: 'IE', label: 'Ireland' },
+    { value: 'NZ', label: 'New Zealand' },
+    { value: 'ZA', label: 'South Africa' },
+    { value: 'BR', label: 'Brazil' },
+    { value: 'MX', label: 'Mexico' },
+    { value: 'AR', label: 'Argentina' },
+    { value: 'CL', label: 'Chile' },
+    { value: 'CO', label: 'Colombia' },
+    { value: 'PE', label: 'Peru' },
+    { value: 'JP', label: 'Japan' },
+    { value: 'KR', label: 'South Korea' },
+    { value: 'CN', label: 'China' },
+    { value: 'IN', label: 'India' },
+    { value: 'SG', label: 'Singapore' },
+    { value: 'MY', label: 'Malaysia' },
+    { value: 'TH', label: 'Thailand' },
+    { value: 'VN', label: 'Vietnam' },
+    { value: 'PH', label: 'Philippines' },
+    { value: 'ID', label: 'Indonesia' },
+    { value: 'AE', label: 'United Arab Emirates' },
+    { value: 'SA', label: 'Saudi Arabia' },
+    { value: 'IL', label: 'Israel' },
+    { value: 'TR', label: 'Turkey' },
+    { value: 'RU', label: 'Russia' },
+    { value: 'UA', label: 'Ukraine' },
+    { value: 'BY', label: 'Belarus' },
+    { value: 'EG', label: 'Egypt' },
+    { value: 'NG', label: 'Nigeria' },
+    { value: 'KE', label: 'Kenya' },
+    { value: 'OTHER', label: 'Other' },
+  ];
+
   const handleAgeRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setAgeRange(e.target.value);
     setNotEligible(null);
   };
 
-  const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCountry(e.target.value);
   };
 
@@ -68,8 +125,8 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
     }
 
     // Validate country (required)
-    if (!country.trim()) {
-      setNotEligible(t('screening.enterCountry'));
+    if (!country) {
+      setNotEligible(t('screening.selectCountry'));
       return;
     }
 
@@ -80,7 +137,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
       demographics: {
         ...prev.demographics,
         age: ageRange,
-        country: country.trim(),
+        country: country,
         gender: gender || undefined,
       },
       controls: {
@@ -158,20 +215,26 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
           }}>
             {t('screening.country')} <span style={{ color: '#c33' }}>*</span>
           </label>
-          <input
-            type="text"
+          <select
             value={country}
             onChange={handleCountryChange}
-            placeholder={t('screening.enterCountry')}
             style={{
               width: '100%',
               maxWidth: '300px',
               padding: '12px',
               fontSize: '16px',
               border: '1px solid #ddd',
-              borderRadius: '4px'
+              borderRadius: '4px',
+              backgroundColor: 'white'
             }}
-          />
+          >
+            <option value="">{t('screening.selectCountry')}</option>
+            {countryOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Gender (optional) */}

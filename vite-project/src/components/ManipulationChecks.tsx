@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
-const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }) => {
   const { t } = useTranslation();
   const [perceivedAuthor, setPerceivedAuthor] = useState<string>(
     data.manipulationChecks?.perceivedAuthor || ''
@@ -22,7 +22,7 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
     t('manipulation.options.no'),
   ];
 
-  const handleSubmit = () => {
+  const saveData = () => {
     setData({
       ...data,
       manipulationChecks: {
@@ -30,7 +30,16 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
         noticedDisclosure,
       },
     });
+  };
+
+  const handleSubmit = () => {
+    saveData();
     onNext('controls');
+  };
+
+  const handleBack = () => {
+    saveData();
+    onBack?.();
   };
 
   const allAnswered = perceivedAuthor !== '' && noticedDisclosure !== '';
@@ -116,24 +125,41 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
         ))}
       </div>
 
-      <button
-        onClick={handleSubmit}
-        disabled={!allAnswered}
-        style={{
-          padding: '12px 32px',
-          fontSize: '16px',
-          backgroundColor: allAnswered ? '#007bff' : '#ccc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: allAnswered ? 'pointer' : 'not-allowed',
-          fontWeight: 'bold',
-          display: 'block',
-          margin: '2rem auto 0'
-        }}
-      >
-        {t('common.continue')}
-      </button>
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+        {onBack && (
+          <button
+            onClick={handleBack}
+            style={{
+              padding: '12px 32px',
+              fontSize: '16px',
+              backgroundColor: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            {t('common.back')}
+          </button>
+        )}
+        <button
+          onClick={handleSubmit}
+          disabled={!allAnswered}
+          style={{
+            padding: '12px 32px',
+            fontSize: '16px',
+            backgroundColor: allAnswered ? '#007bff' : '#ccc',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: allAnswered ? 'pointer' : 'not-allowed',
+            fontWeight: 'bold'
+          }}
+        >
+          {t('common.continue')}
+        </button>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
-const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+const ControlsScreen: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }) => {
   const { t } = useTranslation();
   const [attitudeAI1, setAttitudeAI1] = useState<number>(data.controls?.attitudeAI1 || 0);
   const [attitudeAI2, setAttitudeAI2] = useState<number>(data.controls?.attitudeAI2 || 0);
@@ -14,7 +14,7 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
     { id: 'attitudeAI3', label: t('controls.items.attitudeAI3'), value: attitudeAI3, setValue: setAttitudeAI3 },
   ];
 
-  const handleSubmit = () => {
+  const saveData = () => {
     setData({
       ...data,
       controls: {
@@ -24,7 +24,16 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
         attitudeAI3,
       },
     });
+  };
+
+  const handleSubmit = () => {
+    saveData();
     onNext('attention');
+  };
+
+  const handleBack = () => {
+    saveData();
+    onBack?.();
   };
 
   const allAnswered = attitudeAI1 > 0 && attitudeAI2 > 0 && attitudeAI3 > 0;
@@ -68,24 +77,41 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
 
       {attitudeItems.map(renderLikertItem)}
 
-      <button
-        onClick={handleSubmit}
-        disabled={!allAnswered}
-        style={{
-          padding: '12px 32px',
-          fontSize: '16px',
-          backgroundColor: allAnswered ? '#007bff' : '#ccc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: allAnswered ? 'pointer' : 'not-allowed',
-          fontWeight: 'bold',
-          display: 'block',
-          margin: '2rem auto 0'
-        }}
-      >
-        {t('common.continue')}
-      </button>
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+        {onBack && (
+          <button
+            onClick={handleBack}
+            style={{
+              padding: '12px 32px',
+              fontSize: '16px',
+              backgroundColor: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            {t('common.back')}
+          </button>
+        )}
+        <button
+          onClick={handleSubmit}
+          disabled={!allAnswered}
+          style={{
+            padding: '12px 32px',
+            fontSize: '16px',
+            backgroundColor: allAnswered ? '#007bff' : '#ccc',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: allAnswered ? 'pointer' : 'not-allowed',
+            fontWeight: 'bold'
+          }}
+        >
+          {t('common.continue')}
+        </button>
+      </div>
     </div>
   );
 };

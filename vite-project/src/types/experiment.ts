@@ -86,6 +86,7 @@ export interface ScreenProps {
   data: ExperimentData;
   setData: React.Dispatch<React.SetStateAction<ExperimentData>>;
   onNext: (next: Step) => void;
+  onBack?: () => void;
   condition?: Condition;
 }
 

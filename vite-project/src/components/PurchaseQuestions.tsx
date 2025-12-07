@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
-const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }) => {
   const { t } = useTranslation();
   const [pi1, setPi1] = useState<number>(data.purchase?.pi1 || 0);
   const [pi2, setPi2] = useState<number>(data.purchase?.pi2 || 0);
@@ -22,7 +22,7 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
     { id: 'wtp3', label: t('purchase.items.wtp3'), value: wtp3, setValue: setWtp3 },
   ];
 
-  const handleSubmit = () => {
+  const saveData = () => {
     setData({
       ...data,
       purchase: {
@@ -35,7 +35,16 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
         wtp4: parseFloat(wtp4.toFixed(2)),
       },
     });
+  };
+
+  const handleSubmit = () => {
+    saveData();
     onNext('manipChecks');
+  };
+
+  const handleBack = () => {
+    saveData();
+    onBack?.();
   };
 
   const allAnswered = pi1 > 0 && pi2 > 0 && pi3 > 0 && wtp1 > 0 && wtp2 > 0 && wtp3 > 0 && wtp4 > 0;
@@ -147,24 +156,41 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
         </div>
       </div>
 
-      <button
-        onClick={handleSubmit}
-        disabled={!allAnswered}
-        style={{
-          padding: '12px 32px',
-          fontSize: '16px',
-          backgroundColor: allAnswered ? '#007bff' : '#ccc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: allAnswered ? 'pointer' : 'not-allowed',
-          fontWeight: 'bold',
-          display: 'block',
-          margin: '2rem auto 0'
-        }}
-      >
-        {t('common.continue')}
-      </button>
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+        {onBack && (
+          <button
+            onClick={handleBack}
+            style={{
+              padding: '12px 32px',
+              fontSize: '16px',
+              backgroundColor: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            {t('common.back')}
+          </button>
+        )}
+        <button
+          onClick={handleSubmit}
+          disabled={!allAnswered}
+          style={{
+            padding: '12px 32px',
+            fontSize: '16px',
+            backgroundColor: allAnswered ? '#007bff' : '#ccc',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: allAnswered ? 'pointer' : 'not-allowed',
+            fontWeight: 'bold'
+          }}
+        >
+          {t('common.continue')}
+        </button>
+      </div>
     </div>
   );
 };

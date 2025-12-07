@@ -47,6 +47,28 @@ function App() {
 
   };
 
+  const goBack = () => {
+    // Map each step to its previous step
+    const stepMap: Record<Step, Step | null> = {
+      'consent': null,
+      'screening': 'consent',
+      'stimulus': 'screening',
+      'trust': 'stimulus',
+      'purchase': 'trust',
+      'manipChecks': 'purchase',
+      'controls': 'manipChecks',
+      'attention': 'controls',
+      'debrief': 'attention',
+      'submit': 'debrief',
+      'thankyou': null,
+    };
+
+    const previousStep = stepMap[step];
+    if (previousStep) {
+      setStep(previousStep);
+    }
+  };
+
   const handleConsent = () => {
     goTo('screening');
   };
@@ -91,6 +113,7 @@ function App() {
     data,
     setData,
     onNext: goTo,
+    onBack: goBack,
     condition,
   };
 

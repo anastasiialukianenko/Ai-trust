@@ -46,28 +46,28 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) =
         // Human ad - no disclosure
         return {
           imageSrc: `${baseUrl}ad1.jpg`, 
-          caption: 'Find the perfect companion for your next adventure 👟 #newcollection #stepSense #newseasonstyle #shoetrend',
+          caption: 'Order now at https://cake-make.com 🎂',
           showDisclosure: false,
         };
       case 2:
         // AI ad - no disclosure
         return {
           imageSrc: `${baseUrl}ad2.png`, 
-          caption: 'Find the perfect companion for your next adventure 👟 #newcollection #stepSense #newseasonstyle #shoetrend',
+          caption: 'Order now at https://cake-make.com 🎂',
           showDisclosure: false,
         };
       case 3:
         // AI ad - with disclosure
         return {
           imageSrc: `${baseUrl}ad2.png`, 
-          caption: 'Find the perfect companion for your next adventure 👟 #newcollection #stepSense #newseasonstyle #shoetrend',
+          caption: 'Order now at https://cake-make.com 🎂',
           showDisclosure: true,
           disclosureText: 'AI info',
         };
       default:
         return {
           imageSrc: `${baseUrl}ad1.jpg`,
-          caption: '',
+          caption: 'Order now at https://cake-make.com 🎂',
           showDisclosure: false,
         };
     }
