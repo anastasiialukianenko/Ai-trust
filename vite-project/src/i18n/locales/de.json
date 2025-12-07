@@ -1,0 +1,157 @@
+{
+  "common": {
+    "next": "Weiter",
+    "back": "Zurück",
+    "finish": "Beenden",
+    "continue": "Fortfahren",
+    "agree": "Ich stimme zu",
+    "disagree": "Ich stimme nicht zu",
+    "submit": "Absenden",
+    "required": "Erforderlich"
+  },
+  "consent": {
+    "title": "Einverständniserklärung zur Forschungsstudie",
+    "intro": "Sie sind eingeladen, an einer Forschungsstudie über Konsumentenverhalten und Technologie teilzunehmen. Diese Studie wird etwa 8 Minuten in Anspruch nehmen.",
+    "whatYouWillDo": "Was Sie tun werden:",
+    "viewAd": "Eine Social-Media-Werbung ansehen",
+    "answerQuestions": "Fragen zu Ihren Wahrnehmungen und Absichten beantworten",
+    "demographicSurvey": "Eine kurze demografische Umfrage ausfüllen",
+    "participation": "Ihre Teilnahme ist:",
+    "voluntary": "Freiwillig - Sie können sich jederzeit zurückziehen",
+    "anonymous": "Anonym - Ihre Antworten werden nicht mit Ihrer Identität verknüpft",
+    "confidential": "Vertraulich - Daten werden sicher gespeichert",
+    "risksAndBenefits": "Risiken und Vorteile:",
+    "noRisks": "Es sind keine Risiken durch die Teilnahme an dieser Studie zu erwarten. Ihre Teilnahme wird zum wissenschaftlichen Wissen über Konsumentenverhalten beitragen.",
+    "agreement": "Durch Klicken auf \"Ich stimme zu\" unten bestätigen Sie, dass Sie diese Informationen gelesen haben und der Teilnahme an dieser Studie zustimmen.",
+    "disagreed": "Vielen Dank für Ihr Interesse. Wenn Sie Ihre Meinung ändern, können Sie jederzeit zurückkehren, um teilzunehmen."
+  },
+  "screening": {
+    "title": "Screening-Fragen",
+    "ageRange": "Altersgruppe",
+    "selectAgeRange": "Wählen Sie Ihre Altersgruppe",
+    "country": "Land",
+    "enterCountry": "Geben Sie Ihr Land ein",
+    "gender": "Geschlecht",
+    "selectGender": "Wählen Sie Ihr Geschlecht",
+    "socialMediaFreq": "Wie oft nutzen Sie soziale Medien?",
+    "selectFrequency": "Wählen Sie die Häufigkeit",
+    "notEligible": "Vielen Dank für Ihr Interesse. Leider erfüllen Sie nicht die Teilnahmevoraussetzungen für diese Studie (müssen 18+ sein und soziale Medien mindestens wöchentlich nutzen).",
+    "ageOptions": {
+      "genZ": "Generation Z (18-27 Jahre)",
+      "millennial": "Millennials (28-43 Jahre)",
+      "genX": "Generation X (44-59 Jahre)",
+      "babyBoomer": "Baby Boomer (60-77 Jahre)",
+      "silentGen": "Stille Generation (78+ Jahre)"
+    },
+    "genderOptions": {
+      "male": "Männlich",
+      "female": "Weiblich",
+      "other": "Andere",
+      "preferNotToSay": "Möchte nicht angeben"
+    },
+    "socialMediaOptions": {
+      "severalTimesADay": "Mehrmals täglich",
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "lessThanWeekly": "Weniger als wöchentlich",
+      "never": "Nie"
+    }
+  },
+  "stimulus": {
+    "title": "Werbung",
+    "instructions": "Bitte sehen Sie sich die untenstehende Werbung sorgfältig an. Nehmen Sie sich Zeit, sie zu lesen und zu prüfen.",
+    "viewingTime": "Bitte sehen Sie sich die Werbung mindestens 6 Sekunden lang an, bevor Sie fortfahren."
+  },
+  "trust": {
+    "title": "Vertrauensfragen",
+    "cognitiveTitle": "Kognitives Vertrauen",
+    "affectiveTitle": "Affektives Vertrauen",
+    "items": {
+      "cog1": "Diese Werbung liefert genaue Informationen über das Produkt",
+      "cog2": "Ich kann mich auf diese Werbung als Informationsquelle für das Produkt verlassen.",
+      "cog3": "Diese Werbung hilft mir zu verstehen, wie das Produkt ist.",
+      "cog4": "Insgesamt ist diese Werbung nützlich, um zu entscheiden, ob das Produkt für mich geeignet ist.",
+      "aff1": "Diese Werbung wirkt ehrlich.",
+      "aff2": "Diese Werbung präsentiert das Produkt auf faire Weise.",
+      "aff3": "Diese Werbung scheint die besten Interessen der Verbraucher im Blick zu haben.",
+      "aff4": "Diese Werbung fühlt sich respektvoll gegenüber Menschen wie mir an."
+    },
+    "scale": {
+      "stronglyDisagree": "Stimme überhaupt nicht zu",
+      "disagree": "Stimme nicht zu",
+      "somewhatDisagree": "Stimme eher nicht zu",
+      "neutral": "Neutral",
+      "somewhatAgree": "Stimme eher zu",
+      "agree": "Stimme zu",
+      "stronglyAgree": "Stimme voll und ganz zu"
+    }
+  },
+  "purchase": {
+    "title": "Kaufabsicht",
+    "items": {
+      "pi1": "Ich würde ernsthaft den Kauf dieses Produkts in Betracht ziehen.",
+      "pi2": "Ich werde dieses Produkt wahrscheinlich in naher Zukunft kaufen.",
+      "pi3": "Wenn ich ein solches Produkt bräuchte, würde ich dieses wählen.",
+      "pi4": "Ich würde nach weiteren Informationen über dieses Produkt suchen",
+      "wtp1": "Ich wäre bereit, den üblichen Preis für dieses Produkt zu zahlen.",
+      "wtp2": "Basierend auf der Werbung wäre ich bereit, einen höheren Preis für dieses Produkt im Vergleich zu Alternativen zu zahlen.",
+      "wtp3": "Ich fühle mich wohl dabei, den vorgeschlagenen Preis für dieses Produkt zu zahlen."
+    },
+    "wtp": {
+      "title": "Zahlungsbereitschaft",
+      "question": "Wie viel wären Sie bereit, für dieses Produkt zu zahlen?",
+      "reference": "Ähnliche Produkte kosten normalerweise {{price}} EUR.",
+      "slider": "Bewegen Sie den Schieberegler, um Ihre maximale Zahlungsbereitschaft anzugeben"
+    }
+  },
+  "manipulation": {
+    "title": "Manipulationsprüfungen",
+    "perceivedAuthor": "Wer hat Ihrer Meinung nach die Werbung erstellt, die Sie gerade gesehen haben?",
+    "noticedDisclosure": "Haben Sie Informationen darüber bemerkt, wie die Werbung erstellt wurde?",
+    "options": {
+      "human": "Ein Mensch",
+      "ai": "Ein KI-Tool",
+      "notSure": "Nicht sicher",
+      "yes": "Ja",
+      "no": "Nein"
+    }
+  },
+  "controls": {
+    "title": "Einstellung zur KI",
+    "items": {
+      "attitudeAI1": "Insgesamt fühle ich mich positiv gegenüber künstlicher Intelligenz.",
+      "attitudeAI2": "Ich vertraue darauf, dass KI-Systeme gute Entscheidungen treffen.",
+      "attitudeAI3": "Ich mache mir Sorgen über die negativen Auswirkungen von KI."
+    }
+  },
+  "attention": {
+    "title": "Aufmerksamkeitsprüfung",
+    "instruction": "Um zu zeigen, dass Sie aufmerksam sind, wählen Sie bitte 'Zustimmen' für diese Aussage.",
+    "statement": "Ich achte auf diese Umfrage."
+  },
+  "debrief": {
+    "title": "Nachbesprechung",
+    "thankYou": "Vielen Dank für Ihre Teilnahme an dieser Studie. Diese Forschung untersucht, wie Verbraucher auf KI-generierte Werbeinhalte im Vergleich zu von Menschen erstellten Inhalten reagieren.",
+    "studyPurpose": "Studienzweck:",
+    "purposeText": "Diese Studie verglich von Menschen erstellte Werbung mit KI-generierter Werbung, mit und ohne Offenlegung. Einige der Werbungen, die Sie gesehen haben, wurden mit KI-Tools erstellt, während andere von Menschen erstellt wurden.",
+    "dataCollection": "Datenerfassung:",
+    "dataText": "Ihre Antworten sind anonym und werden ausschließlich für Forschungszwecke verwendet. Alle Daten werden sicher gespeichert und aggregiert analysiert.",
+    "whatNext": "Was passiert als Nächstes:",
+    "nextText": "Ihre Antworten werden zusammen mit den Daten anderer Teilnehmer analysiert, um zu verstehen, wie die Offenlegung von KI-generierten Inhalten das Verbrauchervertrauen, die Kaufabsicht und die Zahlungsbereitschaft beeinflusst.",
+    "contact": "Wenn Sie Fragen zu dieser Studie haben, wenden Sie sich bitte an das Forschungsteam."
+  },
+  "thankYou": {
+    "title": "Vielen Dank!",
+    "message": "Ihre Antworten wurden erfolgreich übermittelt. Vielen Dank für Ihre Teilnahme an dieser Forschungsstudie."
+  },
+  "language": {
+    "select": "Sprache auswählen",
+    "english": "Englisch",
+    "spanish": "Spanisch",
+    "german": "Deutsch",
+    "french": "Französisch",
+    "czech": "Tschechisch",
+    "ukrainian": "Ukrainisch"
+  }
+}
+

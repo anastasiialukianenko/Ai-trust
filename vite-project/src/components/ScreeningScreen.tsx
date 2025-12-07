@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
 const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+  const { t } = useTranslation();
   const [ageRange, setAgeRange] = useState<string>(data.demographics?.age || '');
   const [country, setCountry] = useState<string>(data.demographics?.country || '');
   const [gender, setGender] = useState<string>(data.demographics?.gender || '');
@@ -11,26 +13,26 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
   const [notEligible, setNotEligible] = useState<string | null>(null);
 
   const ageRangeOptions = [
-    { value: 'genZ', label: 'Gen Z (18-27 years)' },
-    { value: 'millennial', label: 'Millennial (28-43 years)' },
-    { value: 'genX', label: 'Gen X (44-59 years)' },
-    { value: 'babyBoomer', label: 'Baby Boomer (60-77 years)' },
-    { value: 'silentGen', label: 'Silent Generation (78+ years)' },
+    { value: 'genZ', label: t('screening.ageOptions.genZ') },
+    { value: 'millennial', label: t('screening.ageOptions.millennial') },
+    { value: 'genX', label: t('screening.ageOptions.genX') },
+    { value: 'babyBoomer', label: t('screening.ageOptions.babyBoomer') },
+    { value: 'silentGen', label: t('screening.ageOptions.silentGen') },
   ];
 
   const genderOptions = [
-    { value: 'male', label: 'Male' },
-    { value: 'female', label: 'Female' },
-    { value: 'other', label: 'Other' },
-    { value: 'preferNotToSay', label: 'Prefer not to say' },
+    { value: 'male', label: t('screening.genderOptions.male') },
+    { value: 'female', label: t('screening.genderOptions.female') },
+    { value: 'other', label: t('screening.genderOptions.other') },
+    { value: 'preferNotToSay', label: t('screening.genderOptions.preferNotToSay') },
   ];
 
   const socialMediaOptions = [
-    { value: 'severalTimesADay', label: 'Several times a day' },
-    { value: 'daily', label: 'Daily' },
-    { value: 'weekly', label: 'Weekly' },
-    { value: 'lessThanWeekly', label: 'Less than weekly' },
-    { value: 'never', label: 'Never' },
+    { value: 'severalTimesADay', label: t('screening.socialMediaOptions.severalTimesADay') },
+    { value: 'daily', label: t('screening.socialMediaOptions.daily') },
+    { value: 'weekly', label: t('screening.socialMediaOptions.weekly') },
+    { value: 'lessThanWeekly', label: t('screening.socialMediaOptions.lessThanWeekly') },
+    { value: 'never', label: t('screening.socialMediaOptions.never') },
   ];
 
   const handleAgeRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -54,20 +56,20 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
   const validateAndSubmit = () => {
     // Validate age range (must select a generation)
     if (!ageRange) {
-      setNotEligible('Please select your age range.');
+      setNotEligible(t('screening.selectAgeRange'));
       return;
     }
 
     // Validate social media frequency
     const validFrequencies = ['weekly', 'daily', 'severalTimesADay'];
     if (!socialMediaFreq || !validFrequencies.includes(socialMediaFreq)) {
-      setNotEligible('You must use social media at least weekly to participate in this study.');
+      setNotEligible(t('screening.notEligible'));
       return;
     }
 
     // Validate country (required)
     if (!country.trim()) {
-      setNotEligible('Please provide your country.');
+      setNotEligible(t('screening.enterCountry'));
       return;
     }
 
@@ -96,10 +98,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
       padding: '2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
-      <h1>Screening</h1>
-      <p style={{ marginBottom: '2rem', color: '#666' }}>
-        Please answer a few quick questions to ensure you're eligible for this study.
-      </p>
+      <h1>{t('screening.title')}</h1>
 
       {notEligible && (
         <div style={{
@@ -110,7 +109,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
           marginBottom: '2rem',
           border: '1px solid #fcc'
         }}>
-          <strong>Not Eligible:</strong> {notEligible}
+          {notEligible}
         </div>
       )}
 
@@ -126,7 +125,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
             marginBottom: '0.5rem',
             fontWeight: '500'
           }}>
-            Age Range <span style={{ color: '#c33' }}>*</span>
+            {t('screening.ageRange')} <span style={{ color: '#c33' }}>*</span>
           </label>
           <select
             value={ageRange}
@@ -141,7 +140,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
               backgroundColor: 'white'
             }}
           >
-            <option value="">Select your generation</option>
+            <option value="">{t('screening.selectAgeRange')}</option>
             {ageRangeOptions.map(option => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -157,13 +156,13 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
             marginBottom: '0.5rem',
             fontWeight: '500'
           }}>
-            Country <span style={{ color: '#c33' }}>*</span>
+            {t('screening.country')} <span style={{ color: '#c33' }}>*</span>
           </label>
           <input
             type="text"
             value={country}
             onChange={handleCountryChange}
-            placeholder="Enter your country"
+            placeholder={t('screening.enterCountry')}
             style={{
               width: '100%',
               maxWidth: '300px',
@@ -182,7 +181,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
             marginBottom: '0.5rem',
             fontWeight: '500'
           }}>
-            Gender (optional)
+            {t('screening.gender')}
           </label>
           <select
             value={gender}
@@ -197,7 +196,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
               backgroundColor: 'white'
             }}
           >
-            <option value="">Select an option (optional)</option>
+            <option value="">{t('screening.selectGender')}</option>
             {genderOptions.map(option => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -213,7 +212,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
             marginBottom: '0.5rem',
             fontWeight: '500'
           }}>
-            How often do you use social media? <span style={{ color: '#c33' }}>*</span>
+            {t('screening.socialMediaFreq')} <span style={{ color: '#c33' }}>*</span>
           </label>
           <select
             value={socialMediaFreq}
@@ -228,7 +227,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
               backgroundColor: 'white'
             }}
           >
-            <option value="">Select an option</option>
+            <option value="">{t('screening.selectFrequency')}</option>
             {socialMediaOptions.map(option => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -252,7 +251,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
           fontWeight: 'bold'
         }}
       >
-        Continue
+        {t('common.continue')}
       </button>
     </div>
   );

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import type { DebriefProps } from '../types/experiment';
 
 const DebriefScreen: React.FC<DebriefProps> = ({ onFinish }) => {
+  const { t } = useTranslation();
   return (
     <div style={{
       maxWidth: '800px',
@@ -10,31 +12,25 @@ const DebriefScreen: React.FC<DebriefProps> = ({ onFinish }) => {
       fontFamily: 'system-ui, -apple-system, sans-serif',
       lineHeight: '1.6'
     }}>
-      <h1>Debrief</h1>
+      <h1>{t('debrief.title')}</h1>
       <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
         <p>
-          Thank you for participating in this study. This research is investigating how 
-          consumers respond to AI-generated advertising content compared to human-created content.
+          {t('debrief.thankYou')}
         </p>
-        <h2>Study Purpose:</h2>
+        <h2>{t('debrief.studyPurpose')}</h2>
         <p>
-          This study compared human-created advertisements with AI-generated advertisements, 
-          with and without disclosure. Some of the advertisements you viewed were created using 
-          AI tools, while others were created by humans.
+          {t('debrief.purposeText')}
         </p>
-        <h2>Data Collection:</h2>
+        <h2>{t('debrief.dataCollection')}</h2>
         <p>
-          Your responses are anonymous and will be used solely for research purposes. 
-          All data will be stored securely and analyzed in aggregate.
+          {t('debrief.dataText')}
         </p>
-        <h2>What Happens Next:</h2>
+        <h2>{t('debrief.whatNext')}</h2>
         <p>
-          Your responses will be analyzed along with other participants' data to understand 
-          how disclosure of AI-generated content affects consumer trust, purchase intention, 
-          and willingness to pay.
+          {t('debrief.nextText')}
         </p>
         <p style={{ marginTop: '2rem', fontWeight: 'bold' }}>
-          If you have any questions about this study, please contact the research team.
+          {t('debrief.contact')}
         </p>
       </div>
       <button
@@ -53,7 +49,7 @@ const DebriefScreen: React.FC<DebriefProps> = ({ onFinish }) => {
           fontWeight: 'bold'
         }}
       >
-        Finish
+        {t('common.finish')}
       </button>
     </div>
   );

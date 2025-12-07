@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 import InstaPost from './InstaPost';
 
 const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) => {
+  const { t } = useTranslation();
   const [startTime] = useState<number>(performance.now());
   const [minViewTimeElapsed, setMinViewTimeElapsed] = useState<boolean>(false);
   const MIN_VIEW_TIME_MS = 6000; // 6 seconds
@@ -36,32 +38,35 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) =
 
   // Determine ad content based on condition
   const getAdContent = () => {
+    // Use import.meta.env.BASE_URL to handle GitHub Pages base path
+    const baseUrl = import.meta.env.BASE_URL;
+    
     switch (condition) {
       case 1:
         // Human ad - no disclosure
         return {
-          imageSrc: '/api/placeholder/400/400', // Replace with actual image URL
-          caption: '',
+          imageSrc: `${baseUrl}ad1.jpg`, 
+          caption: 'Find the perfect companion for your next adventure 👟 #newcollection #stepSense #newseasonstyle #shoetrend',
           showDisclosure: false,
         };
       case 2:
         // AI ad - no disclosure
         return {
-          imageSrc: '/api/placeholder/400/400', // Replace with actual image URL
-          caption: '',
+          imageSrc: `${baseUrl}ad2.png`, 
+          caption: 'Find the perfect companion for your next adventure 👟 #newcollection #stepSense #newseasonstyle #shoetrend',
           showDisclosure: false,
         };
       case 3:
         // AI ad - with disclosure
         return {
-          imageSrc: '/api/placeholder/400/400', // Replace with actual image URL
-          caption: '',
+          imageSrc: `${baseUrl}ad2.png`, 
+          caption: 'Find the perfect companion for your next adventure 👟 #newcollection #stepSense #newseasonstyle #shoetrend',
           showDisclosure: true,
           disclosureText: 'AI info',
         };
       default:
         return {
-          imageSrc: '/api/placeholder/400/400',
+          imageSrc: `${baseUrl}ad1.jpg`,
           caption: '',
           showDisclosure: false,
         };
@@ -78,10 +83,10 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) =
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
       <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        Please view this advertisement
+        {t('stimulus.title')}
       </h1>
       <p style={{ textAlign: 'center', marginBottom: '2rem', color: '#666' }}>
-        Take your time to examine the ad below. When you're ready, click continue.
+        {t('stimulus.instructions')}
       </p>
       
       <InstaPost
@@ -94,7 +99,7 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) =
       <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         {!minViewTimeElapsed && (
           <p style={{ color: '#666', fontSize: '14px', marginBottom: '1rem' }}>
-            Please view the advertisement for at least 6 seconds...
+            {t('stimulus.viewingTime')}
           </p>
         )}
         <button
@@ -111,7 +116,7 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) =
             fontWeight: 'bold'
           }}
         >
-          Continue
+          {t('common.continue')}
         </button>
       </div>
     </div>

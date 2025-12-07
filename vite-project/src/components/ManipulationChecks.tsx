@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
 const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+  const { t } = useTranslation();
   const [perceivedAuthor, setPerceivedAuthor] = useState<string>(
     data.manipulationChecks?.perceivedAuthor || ''
   );
   const [noticedDisclosure, setNoticedDisclosure] = useState<string>(
     data.manipulationChecks?.noticedDisclosure || ''
   );
+
+  const authorOptions = [
+    t('manipulation.options.human'),
+    t('manipulation.options.ai'),
+    t('manipulation.options.notSure'),
+  ];
+
+  const disclosureOptions = [
+    t('manipulation.options.yes'),
+    t('manipulation.options.no'),
+  ];
 
   const handleSubmit = () => {
     setData({
@@ -29,10 +42,7 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
       padding: '2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
-      <h1>Manipulation Checks</h1>
-      <p style={{ marginBottom: '2rem', color: '#666' }}>
-        Please answer the following questions about the advertisement you just saw.
-      </p>
+      <h1>{t('manipulation.title')}</h1>
 
       {/* Question 1: Perceived Author */}
       <div style={{
@@ -42,9 +52,9 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
         borderRadius: '8px'
       }}>
         <p style={{ marginBottom: '1rem', fontWeight: '500' }}>
-          Who do you think created the advertisement you just saw?
+          {t('manipulation.perceivedAuthor')}
         </p>
-        {['A human', 'An AI tool', 'Not sure'].map((option) => (
+        {authorOptions.map((option) => (
           <label
             key={option}
             style={{
@@ -78,9 +88,9 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
         borderRadius: '8px'
       }}>
         <p style={{ marginBottom: '1rem', fontWeight: '500' }}>
-          Did you notice any information about how the ad was created?
+          {t('manipulation.noticedDisclosure')}
         </p>
-        {['Yes', 'No'].map((option) => (
+        {disclosureOptions.map((option) => (
           <label
             key={option}
             style={{
@@ -122,7 +132,7 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, data, setData }) =>
           margin: '2rem auto 0'
         }}
       >
-        Continue
+        {t('common.continue')}
       </button>
     </div>
   );

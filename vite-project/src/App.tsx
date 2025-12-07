@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import type { Condition, Step, ExperimentData } from './types/experiment';
 import { randomCondition } from './utils/randomization';
 import { initialData } from './utils/initialData';
 import { submitExperimentData } from './utils/api';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './components/LanguageSelector';
 
 // Import all screen components
 import ConsentScreen from './components/ConsentScreen';
@@ -18,9 +20,18 @@ import DebriefScreen from './components/DebriefScreen';
 import ThankYouScreen from './components/ThankYouScreen';
 
 function App() {
+  const { i18n } = useTranslation();
   const [condition] = useState<Condition>(() => randomCondition());
   const [data, setData] = useState<ExperimentData>(() => initialData(condition));
   const [step, setStep] = useState<Step>("consent");
+
+  // Store language preference in data when it changes
+  useEffect(() => {
+    setData(prev => ({
+      ...prev,
+      language: i18n.language,
+    }));
+  }, [i18n.language]);
 
   const goTo = (next: Step) => {
     setStep(next);
@@ -85,6 +96,7 @@ function App() {
 
   return (
     <div className="app-layout">
+      <LanguageSelector />
       {(() => {
         switch (step) {
           case 'consent':

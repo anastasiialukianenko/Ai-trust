@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ThankYouScreen: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div style={{
       maxWidth: '800px',
@@ -9,12 +11,9 @@ const ThankYouScreen: React.FC = () => {
       fontFamily: 'system-ui, -apple-system, sans-serif',
       textAlign: 'center'
     }}>
-      <h1>Thank You!</h1>
+      <h1>{t('thankYou.title')}</h1>
       <p style={{ marginTop: '2rem', fontSize: '18px', color: '#666' }}>
-        Your responses have been successfully submitted.
-      </p>
-      <p style={{ marginTop: '1rem', color: '#888' }}>
-        We appreciate your participation in this research study.
+        {t('thankYou.message')}
       </p>
     </div>
   );

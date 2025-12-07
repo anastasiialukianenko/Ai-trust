@@ -71,6 +71,7 @@ export interface ExperimentData {
   stimulusViewTime?: number;
   finishedAt?: number;
   totalDurationMs?: number;
+  language?: string; // Language code (en, es, de, fr)
   trust?: TrustData;
   purchase?: PurchaseData;
   manipulationChecks?: ManipChecks;

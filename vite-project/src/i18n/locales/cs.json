@@ -1,0 +1,157 @@
+{
+  "common": {
+    "next": "Další",
+    "back": "Zpět",
+    "finish": "Dokončit",
+    "continue": "Pokračovat",
+    "agree": "Souhlasím",
+    "disagree": "Nesouhlasím",
+    "submit": "Odeslat",
+    "required": "Povinné"
+  },
+  "consent": {
+    "title": "Souhlas s výzkumnou studií",
+    "intro": "Jste zváni k účasti na výzkumné studii o chování spotřebitelů a technologiích. Tato studie zabere přibližně 8 minut.",
+    "whatYouWillDo": "Co budete dělat:",
+    "viewAd": "Podívat se na reklamu na sociálních sítích",
+    "answerQuestions": "Odpovědět na otázky o vašich vnímáních a záměrech",
+    "demographicSurvey": "Vyplnit krátký demografický průzkum",
+    "participation": "Vaše účast je:",
+    "voluntary": "Dobrovolná - můžete se kdykoli odhlásit",
+    "anonymous": "Anonymní - vaše odpovědi nebudou spojeny s vaší identitou",
+    "confidential": "Důvěrná - data budou bezpečně uložena",
+    "risksAndBenefits": "Rizika a přínosy:",
+    "noRisks": "Nejsou očekávána žádná rizika z účasti na této studii. Vaše účast přispěje k vědeckým znalostem o chování spotřebitelů.",
+    "agreement": "Kliknutím na \"Souhlasím\" níže potvrzujete, že jste si přečetli tyto informace a souhlasíte s účastí na této studii.",
+    "disagreed": "Děkujeme za váš zájem. Pokud změníte názor, můžete se kdykoli vrátit a zúčastnit se."
+  },
+  "screening": {
+    "title": "Screeningové otázky",
+    "ageRange": "Věková skupina",
+    "selectAgeRange": "Vyberte svou věkovou skupinu",
+    "country": "Země",
+    "enterCountry": "Zadejte svou zemi",
+    "gender": "Pohlaví",
+    "selectGender": "Vyberte své pohlaví",
+    "socialMediaFreq": "Jak často používáte sociální sítě?",
+    "selectFrequency": "Vyberte frekvenci",
+    "notEligible": "Děkujeme za váš zájem. Bohužel nesplňujete kritéria způsobilosti pro tuto studii (musíte být 18+ a používat sociální sítě alespoň týdně).",
+    "ageOptions": {
+      "genZ": "Generace Z (18-27 let)",
+      "millennial": "Milleniálové (28-43 let)",
+      "genX": "Generace X (44-59 let)",
+      "babyBoomer": "Baby boomers (60-77 let)",
+      "silentGen": "Tichá generace (78+ let)"
+    },
+    "genderOptions": {
+      "male": "Muž",
+      "female": "Žena",
+      "other": "Jiné",
+      "preferNotToSay": "Raději neříkat"
+    },
+    "socialMediaOptions": {
+      "severalTimesADay": "Několikrát denně",
+      "daily": "Denně",
+      "weekly": "Týdně",
+      "lessThanWeekly": "Méně než týdně",
+      "never": "Nikdy"
+    }
+  },
+  "stimulus": {
+    "title": "Reklama",
+    "instructions": "Prosím pečlivě si prohlédněte reklamu níže. Věnujte čas jejímu přečtení a prozkoumání.",
+    "viewingTime": "Prosím, podívejte se na reklamu alespoň 6 sekund před pokračováním."
+  },
+  "trust": {
+    "title": "Otázky důvěry",
+    "cognitiveTitle": "Kognitivní důvěra",
+    "affectiveTitle": "Afektivní důvěra",
+    "items": {
+      "cog1": "Tato reklama poskytuje přesné informace o produktu",
+      "cog2": "Mohu se na tuto reklamu spolehnout jako na zdroj informací o produktu.",
+      "cog3": "Tato reklama mi pomáhá pochopit, jaký produkt je.",
+      "cog4": "Celkově je tato reklama užitečná pro rozhodování, zda je produkt pro mě vhodný.",
+      "aff1": "Tato reklama se zdá být čestná.",
+      "aff2": "Tato reklama prezentuje produkt spravedlivým způsobem.",
+      "aff3": "Tato reklama se zdá mít na mysli nejlepší zájmy spotřebitelů.",
+      "aff4": "Tato reklama se cítí respektující vůči lidem jako já."
+    },
+    "scale": {
+      "stronglyDisagree": "Rozhodně nesouhlasím",
+      "disagree": "Nesouhlasím",
+      "somewhatDisagree": "Spíše nesouhlasím",
+      "neutral": "Neutrální",
+      "somewhatAgree": "Spíše souhlasím",
+      "agree": "Souhlasím",
+      "stronglyAgree": "Rozhodně souhlasím"
+    }
+  },
+  "purchase": {
+    "title": "Záměr koupě",
+    "items": {
+      "pi1": "Vážně bych zvažoval koupi tohoto produktu.",
+      "pi2": "Pravděpodobně koupím tento produkt v blízké budoucnosti.",
+      "pi3": "Kdybych potřeboval takový produkt, vybral bych si tento.",
+      "pi4": "Hledal bych více informací o tomto produktu",
+      "wtp1": "Byl bych ochoten zaplatit obvyklou cenu za tento produkt.",
+      "wtp2": "Na základě reklamy bych byl ochoten zaplatit vyšší cenu za tento produkt ve srovnání s alternativami.",
+      "wtp3": "Cítím se pohodlně při placení navržené ceny za tento produkt."
+    },
+    "wtp": {
+      "title": "Ochota platit",
+      "question": "Kolik byste byli ochotni zaplatit za tento produkt?",
+      "reference": "Podobné produkty obvykle stojí {{price}} EUR.",
+      "slider": "Upravte posuvník pro označení vaší maximální ochoty platit"
+    }
+  },
+  "manipulation": {
+    "title": "Kontroly manipulace",
+    "perceivedAuthor": "Kdo podle vás vytvořil reklamu, kterou jste právě viděli?",
+    "noticedDisclosure": "Všimli jste si nějakých informací o tom, jak byla reklama vytvořena?",
+    "options": {
+      "human": "Člověk",
+      "ai": "Nástroj AI",
+      "notSure": "Nejsem si jistý",
+      "yes": "Ano",
+      "no": "Ne"
+    }
+  },
+  "controls": {
+    "title": "Postoj k AI",
+    "items": {
+      "attitudeAI1": "Celkově se cítím pozitivně ohledně umělé inteligence.",
+      "attitudeAI2": "Důvěřuji systémům AI, že učiní dobrá rozhodnutí.",
+      "attitudeAI3": "Obávám se negativních dopadů AI."
+    }
+  },
+  "attention": {
+    "title": "Kontrola pozornosti",
+    "instruction": "Abychom prokázali, že dáváte pozor, prosím vyberte 'Souhlasím' pro toto tvrzení.",
+    "statement": "Věnuji pozornost tomuto průzkumu."
+  },
+  "debrief": {
+    "title": "Závěrečné informace",
+    "thankYou": "Děkujeme za účast na této studii. Tento výzkum zkoumá, jak spotřebitelé reagují na reklamní obsah generovaný AI ve srovnání s obsahem vytvořeným lidmi.",
+    "studyPurpose": "Účel studie:",
+    "purposeText": "Tato studie porovnávala reklamy vytvořené lidmi s reklamami generovanými AI, s a bez zveřejnění. Některé z reklam, které jste viděli, byly vytvořeny pomocí nástrojů AI, zatímco jiné byly vytvořeny lidmi.",
+    "dataCollection": "Sběr dat:",
+    "dataText": "Vaše odpovědi jsou anonymní a budou použity výhradně pro výzkumné účely. Všechna data budou bezpečně uložena a analyzována agregovaně.",
+    "whatNext": "Co se stane dál:",
+    "nextText": "Vaše odpovědi budou analyzovány spolu s daty ostatních účastníků, aby bylo možné pochopit, jak zveřejnění obsahu generovaného AI ovlivňuje důvěru spotřebitelů, záměr koupě a ochotu platit.",
+    "contact": "Pokud máte jakékoli dotazy ohledně této studie, kontaktujte prosím výzkumný tým."
+  },
+  "thankYou": {
+    "title": "Děkujeme!",
+    "message": "Vaše odpovědi byly úspěšně odeslány. Děkujeme za účast na této výzkumné studii."
+  },
+  "language": {
+    "select": "Vybrat jazyk",
+    "english": "Angličtina",
+    "spanish": "Španělština",
+    "german": "Němčina",
+    "french": "Francouzština",
+    "czech": "Čeština",
+    "ukrainian": "Ukrajinština"
+  }
+}
+

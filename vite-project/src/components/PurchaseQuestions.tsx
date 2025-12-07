@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
 const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
-    const [pi1, setPi1] = useState<number>(data.purchase?.pi1 || 0);
-    const [pi2, setPi2] = useState<number>(data.purchase?.pi2 || 0);
-    const [pi3, setPi3] = useState<number>(data.purchase?.pi3 || 0);
+  const { t } = useTranslation();
+  const [pi1, setPi1] = useState<number>(data.purchase?.pi1 || 0);
+  const [pi2, setPi2] = useState<number>(data.purchase?.pi2 || 0);
+  const [pi3, setPi3] = useState<number>(data.purchase?.pi3 || 0);
 
-    const [wtp1, setWtp1] = useState<number>(data.purchase?.wtp1 || 0);
-    const [wtp2, setWtp2] = useState<number>(data.purchase?.wtp2 || 0);
-    const [wtp3, setWtp3] = useState<number>(data.purchase?.wtp3 || 0);
-    const [wtp4, setWtp4] = useState<number>(data.purchase?.wtp4 || 0);
+  const [wtp1, setWtp1] = useState<number>(data.purchase?.wtp1 || 0);
+  const [wtp2, setWtp2] = useState<number>(data.purchase?.wtp2 || 0);
+  const [wtp3, setWtp3] = useState<number>(data.purchase?.wtp3 || 0);
+  const [wtp4, setWtp4] = useState<number>(data.purchase?.wtp4 || 0);
 
   const purchaseIntentionItems = [
-    { id: 'pi1', label: 'I would seriously consider buying this product.', value: pi1, setValue: setPi1 },
-    { id: 'pi2', label: 'I am likely to buy this product in the near future.', value: pi2, setValue: setPi2 },
-    { id: 'pi3', label: 'If I needed a product like this, I would choose this one.', value: pi3, setValue: setPi3 },
-    { id: 'wtp1', label: 'I would be willing to pay the typical price for this product.', value: wtp1, setValue: setWtp1 },
-    { id: 'wtp2', label: 'Based on the advertisement, I would be willing to pay a higher price for this product compared to alternatives.', value: wtp2, setValue: setWtp2 },
-    { id: 'wtp3', label: 'I feel comfortable paying the suggested price for this product.', value: wtp3, setValue: setWtp3 },
+    { id: 'pi1', label: t('purchase.items.pi1'), value: pi1, setValue: setPi1 },
+    { id: 'pi2', label: t('purchase.items.pi2'), value: pi2, setValue: setPi2 },
+    { id: 'pi3', label: t('purchase.items.pi3'), value: pi3, setValue: setPi3 },
+    { id: 'wtp1', label: t('purchase.items.wtp1'), value: wtp1, setValue: setWtp1 },
+    { id: 'wtp2', label: t('purchase.items.wtp2'), value: wtp2, setValue: setWtp2 },
+    { id: 'wtp3', label: t('purchase.items.wtp3'), value: wtp3, setValue: setWtp3 },
   ];
 
   const handleSubmit = () => {
@@ -47,8 +49,8 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
     }}>
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{item.label}</p>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
-        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px' }}>Strongly Disagree</span>
-        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>Strongly Agree</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px' }}>{t('trust.scale.stronglyDisagree')}</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>{t('trust.scale.stronglyAgree')}</span>
       </div>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
           <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
@@ -74,30 +76,25 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
       padding: '2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
-      <h1>Purchase Questions</h1>
-      <p style={{ marginBottom: '2rem', color: '#666' }}>
-        Please answer the following questions about your purchase intentions and willingness to pay.
-      </p>
+      <h1>{t('purchase.title')}</h1>
 
       <div style={{ marginBottom: '2rem' }}>
-        <h2 style={{ fontSize: '18px', marginBottom: '1rem', color: '#333' }}>Purchase Intention</h2>
-        <p style={{ marginBottom: '1rem', fontSize: '14px', color: '#666' }}>
-          Please rate your agreement with each statement on a scale from 1 (Strongly Disagree) to 7 (Strongly Agree).
-        </p>
+        <h2 style={{ fontSize: '18px', marginBottom: '1rem', color: '#333' }}>{t('purchase.title')}</h2>
         {purchaseIntentionItems.map(renderLikertItem)}
       </div>
 
       <div style={{
         marginBottom: '2rem',
+        padding: '1.5rem',
         backgroundColor: '#f9f9f9',
         borderRadius: '8px'
       }}>
-        <h2 style={{ fontSize: '18px', marginBottom: '1rem', color: '#333' }}>Willingness to Pay</h2>
+        <h2 style={{ fontSize: '18px', marginBottom: '1rem', color: '#333' }}>{t('purchase.wtp.title')}</h2>
         <p style={{ marginBottom: '1rem', color: '#666' }}>
-          Similar products usually cost <strong>70 EUR</strong>.
+          {t('purchase.wtp.reference', { price: '70' })}
         </p>
         <p style={{ marginBottom: '1.5rem', color: '#666' }}>
-          How much would you be willing to pay for this product?
+          {t('purchase.wtp.question')}
         </p>
         <div style={{ marginBottom: '1rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -166,7 +163,7 @@ const PurchaseQuestions: React.FC<ScreenProps> = ({ onNext, data, setData }) => 
           margin: '2rem auto 0'
         }}
       >
-        Continue
+        {t('common.continue')}
       </button>
     </div>
   );

@@ -1,0 +1,157 @@
+{
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "finish": "Finish",
+    "continue": "Continue",
+    "agree": "I Agree",
+    "disagree": "I Do Not Agree",
+    "submit": "Submit",
+    "required": "Required"
+  },
+  "consent": {
+    "title": "Research Study Consent",
+    "intro": "You are invited to participate in a research study about consumer behavior and technology. This study will take approximately 8 minutes to complete.",
+    "whatYouWillDo": "What you will do:",
+    "viewAd": "View a social media advertisement",
+    "answerQuestions": "Answer questions about your perceptions and intentions",
+    "demographicSurvey": "Complete a brief demographic survey",
+    "participation": "Your participation is:",
+    "voluntary": "Voluntary - you can withdraw at any time",
+    "anonymous": "Anonymous - your responses will not be linked to your identity",
+    "confidential": "Confidential - data will be stored securely",
+    "risksAndBenefits": "Risks and Benefits:",
+    "noRisks": "There are no anticipated risks from participating in this study. Your participation will contribute to scientific knowledge about consumer behavior.",
+    "agreement": "By clicking \"I Agree\" below, you indicate that you have read this information and agree to participate in this study.",
+    "disagreed": "Thank you for your interest. If you change your mind, you can return to participate at any time."
+  },
+  "screening": {
+    "title": "Screening Questions",
+    "ageRange": "Age Range",
+    "selectAgeRange": "Select your age range",
+    "country": "Country",
+    "enterCountry": "Enter your country",
+    "gender": "Gender",
+    "selectGender": "Select your gender",
+    "socialMediaFreq": "How often do you use social media?",
+    "selectFrequency": "Select frequency",
+    "notEligible": "Thank you for your interest. Unfortunately, you do not meet the eligibility criteria for this study (must be 18+ and use social media at least weekly).",
+    "ageOptions": {
+      "genZ": "Gen Z (18-27 years)",
+      "millennial": "Millennial (28-43 years)",
+      "genX": "Gen X (44-59 years)",
+      "babyBoomer": "Baby Boomer (60-77 years)",
+      "silentGen": "Silent Generation (78+ years)"
+    },
+    "genderOptions": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "preferNotToSay": "Prefer not to say"
+    },
+    "socialMediaOptions": {
+      "severalTimesADay": "Several times a day",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "lessThanWeekly": "Less than weekly",
+      "never": "Never"
+    }
+  },
+  "stimulus": {
+    "title": "Advertisement",
+    "instructions": "Please carefully view the advertisement below. Take your time to read and examine it.",
+    "viewingTime": "Please view the advertisement for at least 6 seconds before continuing."
+  },
+  "trust": {
+    "title": "Trust Questions",
+    "cognitiveTitle": "Cognitive Trust",
+    "affectiveTitle": "Affective Trust",
+    "items": {
+      "cog1": "This advertisement provides accurate information about the product",
+      "cog2": "I can rely on this advertisement as a source of product information.",
+      "cog3": "This advertisement helps me understand what the product is like.",
+      "cog4": "Overall, this advertisement is useful for deciding whether the product is right for me.",
+      "aff1": "This advertisement seems honest.",
+      "aff2": "This advertisement presents the product in a fair way.",
+      "aff3": "This advertisement seems to have consumers' best interests in mind.",
+      "aff4": "This advertisement feels respectful toward people like me."
+    },
+    "scale": {
+      "stronglyDisagree": "Strongly Disagree",
+      "disagree": "Disagree",
+      "somewhatDisagree": "Somewhat Disagree",
+      "neutral": "Neutral",
+      "somewhatAgree": "Somewhat Agree",
+      "agree": "Agree",
+      "stronglyAgree": "Strongly Agree"
+    }
+  },
+  "purchase": {
+    "title": "Purchase Intention",
+    "items": {
+      "pi1": "I would seriously consider buying this product.",
+      "pi2": "I am likely to buy this product in the near future.",
+      "pi3": "If I needed a product like this, I would choose this one.",
+      "pi4": "I would search for more information about this product",
+      "wtp1": "I would be willing to pay the typical price for this product.",
+      "wtp2": "Based on the advertisement, I would be willing to pay a higher price for this product compared to alternatives.",
+      "wtp3": "I feel comfortable paying the suggested price for this product."
+    },
+    "wtp": {
+      "title": "Willingness to Pay",
+      "question": "How much would you be willing to pay for this product?",
+      "reference": "Similar products usually cost {{price}} EUR.",
+      "slider": "Adjust the slider to indicate your maximum willingness to pay"
+    }
+  },
+  "manipulation": {
+    "title": "Manipulation Checks",
+    "perceivedAuthor": "Who do you think created the advertisement you just saw?",
+    "noticedDisclosure": "Did you notice any information about how the ad was created?",
+    "options": {
+      "human": "A human",
+      "ai": "An AI tool",
+      "notSure": "Not sure",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "controls": {
+    "title": "Attitude Toward AI",
+    "items": {
+      "attitudeAI1": "Overall, I feel positive about artificial intelligence.",
+      "attitudeAI2": "I trust AI systems to make good decisions.",
+      "attitudeAI3": "I worry about the negative impacts of AI."
+    }
+  },
+  "attention": {
+    "title": "Attention Check",
+    "instruction": "To show that you are paying attention, please select 'Agree' for this statement.",
+    "statement": "I am paying attention to this survey."
+  },
+  "debrief": {
+    "title": "Debrief",
+    "thankYou": "Thank you for participating in this study. This research is investigating how consumers respond to AI-generated advertising content compared to human-created content.",
+    "studyPurpose": "Study Purpose:",
+    "purposeText": "This study compared human-created advertisements with AI-generated advertisements, with and without disclosure. Some of the advertisements you viewed were created using AI tools, while others were created by humans.",
+    "dataCollection": "Data Collection:",
+    "dataText": "Your responses are anonymous and will be used solely for research purposes. All data will be stored securely and analyzed in aggregate.",
+    "whatNext": "What Happens Next:",
+    "nextText": "Your responses will be analyzed along with other participants' data to understand how disclosure of AI-generated content affects consumer trust, purchase intention, and willingness to pay.",
+    "contact": "If you have any questions about this study, please contact the research team."
+  },
+  "thankYou": {
+    "title": "Thank You!",
+    "message": "Your responses have been submitted successfully. Thank you for participating in this research study."
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "spanish": "Español",
+    "german": "Deutsch",
+    "french": "Français",
+    "czech": "Čeština",
+    "ukrainian": "Українська"
+  }
+}
+

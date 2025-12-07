@@ -48,7 +48,7 @@
 .insta-image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 4/5;
   background-color: #f0f0f0;
   overflow: hidden;
 }

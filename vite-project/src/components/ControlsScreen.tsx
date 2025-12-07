@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ScreenProps } from '../types/experiment';
 
 const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
+  const { t } = useTranslation();
   const [attitudeAI1, setAttitudeAI1] = useState<number>(data.controls?.attitudeAI1 || 0);
   const [attitudeAI2, setAttitudeAI2] = useState<number>(data.controls?.attitudeAI2 || 0);
   const [attitudeAI3, setAttitudeAI3] = useState<number>(data.controls?.attitudeAI3 || 0);
 
   const attitudeItems = [
-    { id: 'attitudeAI1', label: 'Overall, I feel positive about artificial intelligence.', value: attitudeAI1, setValue: setAttitudeAI1 },
-    { id: 'attitudeAI2', label: 'I trust AI systems to make good decisions.', value: attitudeAI2, setValue: setAttitudeAI2 },
-    { id: 'attitudeAI3', label: 'I worry about the negative impacts of AI.', value: attitudeAI3, setValue: setAttitudeAI3 },
+    { id: 'attitudeAI1', label: t('controls.items.attitudeAI1'), value: attitudeAI1, setValue: setAttitudeAI1 },
+    { id: 'attitudeAI2', label: t('controls.items.attitudeAI2'), value: attitudeAI2, setValue: setAttitudeAI2 },
+    { id: 'attitudeAI3', label: t('controls.items.attitudeAI3'), value: attitudeAI3, setValue: setAttitudeAI3 },
   ];
 
   const handleSubmit = () => {
@@ -36,8 +38,8 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
     }}>
       <p style={{ marginBottom: '1rem', fontWeight: '500' }}>{item.label}</p>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
-        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'left'}}>Strongly Disagree</span>
-        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>Strongly Agree</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'left'}}>{t('trust.scale.stronglyDisagree')}</span>
+        <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>{t('trust.scale.stronglyAgree')}</span>
       </div>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
           <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
@@ -62,10 +64,7 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
       padding: '2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
-      <h1>Attitude Toward AI</h1>
-      <p style={{ marginBottom: '2rem', color: '#666' }}>
-        Please rate your agreement with each statement about artificial intelligence on a scale from 1 (Strongly Disagree) to 7 (Strongly Agree).
-      </p>
+      <h1>{t('controls.title')}</h1>
 
       {attitudeItems.map(renderLikertItem)}
 
@@ -85,7 +84,7 @@ const ControlsScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
           margin: '2rem auto 0'
         }}
       >
-        Continue
+        {t('common.continue')}
       </button>
     </div>
   );

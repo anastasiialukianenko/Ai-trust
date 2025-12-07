@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ConsentScreenProps {
   onAgree: () => void;
 }
 
 const ConsentScreen: React.FC<ConsentScreenProps> = ({ onAgree }) => {
+  const { t } = useTranslation();
   const [disagreed, setDisagreed] = useState(false);
 
   const handleAgree = () => {
@@ -25,12 +27,9 @@ const ConsentScreen: React.FC<ConsentScreenProps> = ({ onAgree }) => {
         lineHeight: '1.6',
         textAlign: 'center'
       }}>
-        <h1>Thank You</h1>
+        <h1>{t('common.thankYou', 'Thank You')}</h1>
         <p style={{ marginTop: '2rem', fontSize: '18px', color: '#666' }}>
-          We understand and respect your decision. Thank you for your time.
-        </p>
-        <p style={{ marginTop: '1rem', color: '#888' }}>
-          If you change your mind, you can refresh the page to participate.
+          {t('consent.disagreed')}
         </p>
       </div>
     );
@@ -44,32 +43,25 @@ const ConsentScreen: React.FC<ConsentScreenProps> = ({ onAgree }) => {
       fontFamily: 'system-ui, -apple-system, sans-serif',
       lineHeight: '1.6'
     }}>
-      <h1>Research Study Consent</h1>
+      <h1>{t('consent.title')}</h1>
       <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-        <p>
-          You are invited to participate in a research study about consumer behavior and technology.
-          This study will take approximately 8 minutes to complete.
-        </p>
-        <h2>What you will do:</h2>
+        <p>{t('consent.intro')}</p>
+        <h2>{t('consent.whatYouWillDo')}</h2>
         <ul>
-          <li>View a social media advertisement</li>
-          <li>Answer questions about your perceptions and intentions</li>
-          <li>Complete a brief demographic survey</li>
+          <li>{t('consent.viewAd')}</li>
+          <li>{t('consent.answerQuestions')}</li>
+          <li>{t('consent.demographicSurvey')}</li>
         </ul>
-        <h2>Your participation is:</h2>
+        <h2>{t('consent.participation')}</h2>
         <ul>
-          <li>Voluntary - you can withdraw at any time</li>
-          <li>Anonymous - your responses will not be linked to your identity</li>
-          <li>Confidential - data will be stored securely</li>
+          <li>{t('consent.voluntary')}</li>
+          <li>{t('consent.anonymous')}</li>
+          <li>{t('consent.confidential')}</li>
         </ul>
-        <h2>Risks and Benefits:</h2>
-        <p>
-          There are no anticipated risks from participating in this study. 
-          Your participation will contribute to scientific knowledge about consumer behavior.
-        </p>
+        <h2>{t('consent.risksAndBenefits')}</h2>
+        <p>{t('consent.noRisks')}</p>
         <p style={{ marginTop: '2rem', fontWeight: 'bold' }}>
-          By clicking "I Agree" below, you indicate that you have read this information 
-          and agree to participate in this study.
+          {t('consent.agreement')}
         </p>
       </div>
       <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
@@ -86,7 +78,7 @@ const ConsentScreen: React.FC<ConsentScreenProps> = ({ onAgree }) => {
             fontWeight: 'bold'
           }}
         >
-          I Agree
+          {t('common.agree')}
         </button>
         <button
           onClick={handleDisagree}
@@ -101,7 +93,7 @@ const ConsentScreen: React.FC<ConsentScreenProps> = ({ onAgree }) => {
             fontWeight: 'bold'
           }}
         >
-          I Do Not Agree
+          {t('common.disagree')}
         </button>
       </div>
     </div>
