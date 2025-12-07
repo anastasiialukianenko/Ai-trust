@@ -127,8 +127,10 @@
   },
   "attention": {
     "title": "Kontrola pozornosti",
-    "instruction": "Abychom prokázali, že dáváte pozor, prosím vyberte 'Souhlasím' pro toto tvrzení.",
-    "statement": "Věnuji pozornost tomuto průzkumu."
+    "instruction": "Prosím klikněte na 'Souhlasím', abyste prokázali, že dáváte pozor:",
+    "statement": "Věnuji pozornost tomuto průzkumu.",
+    "agree": "Souhlasím",
+    "disagree": "Nesouhlasím"
   },
   "debrief": {
     "title": "Závěrečné informace",

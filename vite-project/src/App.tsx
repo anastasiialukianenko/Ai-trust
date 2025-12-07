@@ -33,6 +33,11 @@ function App() {
     }));
   }, [i18n.language]);
 
+  // Scroll to top whenever step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   const goTo = (next: Step) => {
     setStep(next);
     

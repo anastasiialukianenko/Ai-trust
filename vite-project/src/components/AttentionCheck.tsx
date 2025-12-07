@@ -4,18 +4,18 @@ import type { ScreenProps } from '../types/experiment';
 
 const AttentionCheck: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }) => {
   const { t } = useTranslation();
-  const [answer, setAnswer] = useState<number>(
-    data.qc?.attentionCheckAnswer ? parseInt(data.qc.attentionCheckAnswer) : 0
+  const [answer, setAnswer] = useState<string>(
+    data.qc?.attentionCheckAnswer || ''
   );
 
   const saveData = () => {
-    const passed = answer === 5; 
+    const passed = answer === 'agree'; 
     
     setData({
       ...data,
       qc: {
         ...data.qc,
-        attentionCheckAnswer: answer.toString(),
+        attentionCheckAnswer: answer,
         attentionCheckPassed: passed,
       },
     });
@@ -39,37 +39,75 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }
       fontFamily: 'system-ui, -apple-system, sans-serif'
     }}>
       <h1>{t('attention.title')}</h1>
+      
       <div style={{
-        marginBottom: '1.5rem',
-        padding: '0.5rem',
-        backgroundColor: '#f9f9f9',
-        borderRadius: '8px'
+        marginBottom: '2rem',
+        padding: '2rem',
+        backgroundColor: '#f0f7ff',
+        borderRadius: '8px',
+        border: '2px solid #007bff'
       }}>
-        <p style={{ marginBottom: '1rem', fontWeight: '500', fontSize: '16px' }}>
+        <p style={{ 
+          marginBottom: '1.5rem', 
+          fontSize: '18px', 
+          fontWeight: '600',
+          color: '#333',
+          textAlign: 'center'
+        }}>
           {t('attention.instruction')}
         </p>
-        <p style={{ marginBottom: '1rem', fontWeight: '500' }}>
+        <p style={{ 
+          marginBottom: '2rem', 
+          fontSize: '16px',
+          color: '#555',
+          textAlign: 'center'
+        }}>
           {t('attention.statement')}
         </p>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', marginBottom: '1rem', maxWidth: '400px' }}>
-          <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'left'}}>{t('trust.scale.stronglyDisagree')}</span>
-          <span style={{ fontSize: '14px', color: '#666', maxWidth: '80px', textAlign: 'right'}}>{t('trust.scale.stronglyAgree')}</span>
-        </div>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'nowrap', justifyContent: 'space-between', maxWidth: '400px' }}>  {[1, 2, 3, 4, 5, 6, 7].map((score) => (
-            <label key={score} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-              <input
-                type="radio"
-                name="attentionCheck"
-                value={score}
-                checked={answer === score}
-                onChange={() => setAnswer(score)}
-                style={{ marginRight: '4px' }}
-              />
-              <span>{score}</span>
-            </label>
-          ))}
+        
+        <div style={{ 
+          display: 'flex', 
+          gap: '1rem', 
+          justifyContent: 'center',
+          flexWrap: 'wrap'
+        }}>
+          <button
+            onClick={() => setAnswer('agree')}
+            style={{
+              padding: '16px 32px',
+              fontSize: '18px',
+              backgroundColor: answer === 'agree' ? '#28a745' : '#fff',
+              color: answer === 'agree' ? '#fff' : '#28a745',
+              border: '2px solid #28a745',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              minWidth: '150px',
+              transition: 'all 0.2s'
+            }}
+          >
+            {t('attention.agree')}
+          </button>
+          <button
+            onClick={() => setAnswer('disagree')}
+            style={{
+              padding: '16px 32px',
+              fontSize: '18px',
+              backgroundColor: answer === 'disagree' ? '#dc3545' : '#fff',
+              color: answer === 'disagree' ? '#fff' : '#dc3545',
+              border: '2px solid #dc3545',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              minWidth: '150px',
+              transition: 'all 0.2s'
+            }}
+          >
+            {t('attention.disagree')}
+          </button>
         </div>
       </div>
+
       <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
         {onBack && (
           <button
@@ -90,15 +128,15 @@ const AttentionCheck: React.FC<ScreenProps> = ({ onNext, onBack, data, setData }
         )}
         <button
           onClick={handleSubmit}
-          disabled={answer === 0}
+          disabled={!answer}
           style={{
             padding: '12px 32px',
             fontSize: '16px',
-            backgroundColor: answer > 0 ? '#007bff' : '#ccc',
+            backgroundColor: answer ? '#007bff' : '#ccc',
             color: 'white',
             border: 'none',
             borderRadius: '4px',
-            cursor: answer > 0 ? 'pointer' : 'not-allowed',
+            cursor: answer ? 'pointer' : 'not-allowed',
             fontWeight: 'bold'
           }}
         >

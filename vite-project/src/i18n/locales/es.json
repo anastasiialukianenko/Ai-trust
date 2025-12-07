@@ -127,8 +127,10 @@
   },
   "attention": {
     "title": "Verificación de Atención",
-    "instruction": "Para demostrar que está prestando atención, por favor seleccione 'De acuerdo' para esta declaración.",
-    "statement": "Estoy prestando atención a esta encuesta."
+    "instruction": "Por favor, haga clic en 'De acuerdo' para demostrar que está prestando atención:",
+    "statement": "Estoy prestando atención a esta encuesta.",
+    "agree": "De acuerdo",
+    "disagree": "En desacuerdo"
   },
   "debrief": {
     "title": "Información Final",

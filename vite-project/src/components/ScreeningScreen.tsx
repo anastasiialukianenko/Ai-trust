@@ -130,6 +130,12 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
       return;
     }
 
+    // Validate gender (required)
+    if (!gender) {
+      setNotEligible(t('screening.selectGender'));
+      return;
+    }
+
     // All validations passed - save data and proceed
     setNotEligible(null);
     setData(prev => ({
@@ -138,7 +144,7 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
         ...prev.demographics,
         age: ageRange,
         country: country,
-        gender: gender || undefined,
+        gender: gender,
       },
       controls: {
         ...prev.controls,
@@ -237,14 +243,14 @@ const ScreeningScreen: React.FC<ScreenProps> = ({ onNext, data, setData }) => {
           </select>
         </div>
 
-        {/* Gender (optional) */}
+        {/* Gender */}
         <div>
           <label style={{
             display: 'block',
             marginBottom: '0.5rem',
             fontWeight: '500'
           }}>
-            {t('screening.gender')}
+            {t('screening.gender')} <span style={{ color: '#c33' }}>*</span>
           </label>
           <select
             value={gender}

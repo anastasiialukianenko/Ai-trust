@@ -127,8 +127,10 @@
   },
   "attention": {
     "title": "Vérification de l'attention",
-    "instruction": "Pour montrer que vous prêtez attention, veuillez sélectionner 'D'accord' pour cette déclaration.",
-    "statement": "Je prête attention à cette enquête."
+    "instruction": "Veuillez cliquer sur 'D'accord' pour montrer que vous prêtez attention :",
+    "statement": "Je prête attention à cette enquête.",
+    "agree": "D'accord",
+    "disagree": "Pas d'accord"
   },
   "debrief": {
     "title": "Débriefing",

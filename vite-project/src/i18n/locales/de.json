@@ -127,8 +127,10 @@
   },
   "attention": {
     "title": "Aufmerksamkeitsprüfung",
-    "instruction": "Um zu zeigen, dass Sie aufmerksam sind, wählen Sie bitte 'Zustimmen' für diese Aussage.",
-    "statement": "Ich achte auf diese Umfrage."
+    "instruction": "Bitte klicken Sie auf 'Zustimmen', um zu zeigen, dass Sie aufmerksam sind:",
+    "statement": "Ich achte auf diese Umfrage.",
+    "agree": "Zustimmen",
+    "disagree": "Nicht zustimmen"
   },
   "debrief": {
     "title": "Nachbesprechung",
