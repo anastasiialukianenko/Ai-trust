@@ -45,7 +45,7 @@ const StimulusScreen: React.FC<ScreenProps> = ({ onNext, setData, condition }) =
       case 1:
         // Human ad - no disclosure
         return {
-          imageSrc: `${baseUrl}ad1.jpg`, 
+          imageSrc: `${baseUrl}ad1.png`, 
           caption: 'Order now at https://cake-make.com 🎂',
           showDisclosure: false,
         };
