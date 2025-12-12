@@ -1,4 +1,5 @@
 import type { ExperimentData } from '../types/experiment';
+import { prepareDataForBackend } from './dataTransform';
 
 /**
  * Configuration for Google Apps Script endpoint
@@ -18,8 +19,11 @@ export async function submitExperimentData(data: ExperimentData): Promise<void> 
     throw new Error('Google Apps Script URL not configured');
   }
 
+  // Prepare data with computed backend fields
+  const preparedData = prepareDataForBackend(data);
+
   console.log('📤 Submitting data to:', GOOGLE_APPS_SCRIPT_URL);
-  console.log('📊 Data being submitted:', JSON.stringify(data, null, 2));
+  console.log('📊 Data being submitted:', JSON.stringify(preparedData, null, 2));
 
   try {
     await fetch(GOOGLE_APPS_SCRIPT_URL, {
@@ -28,7 +32,7 @@ export async function submitExperimentData(data: ExperimentData): Promise<void> 
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(preparedData),
     });
 
     // Note: With no-cors mode, we can't read the response

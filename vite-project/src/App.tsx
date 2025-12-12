@@ -99,7 +99,7 @@ function App() {
     // Update data first
     setData(finalData);
 
-    // Submit data asynchronously, then move to thankyou
+    // Submit data asynchronously (data transformation happens in submitExperimentData)
     console.log('📤 Calling submitExperimentData...');
     submitExperimentData(finalData)
       .then(() => {

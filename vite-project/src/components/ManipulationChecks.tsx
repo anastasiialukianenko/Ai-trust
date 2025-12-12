@@ -11,15 +11,16 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, onBack, data, setDa
     data.manipulationChecks?.noticedDisclosure || ''
   );
 
+  // Store English values internally, but display translated labels
   const authorOptions = [
-    t('manipulation.options.human'),
-    t('manipulation.options.ai'),
-    t('manipulation.options.notSure'),
+    { value: 'human', label: t('manipulation.options.human') },
+    { value: 'ai', label: t('manipulation.options.ai') },
+    { value: 'notSure', label: t('manipulation.options.notSure') },
   ];
 
   const disclosureOptions = [
-    t('manipulation.options.yes'),
-    t('manipulation.options.no'),
+    { value: 'yes', label: t('manipulation.options.yes') },
+    { value: 'no', label: t('manipulation.options.no') },
   ];
 
   const saveData = () => {
@@ -65,13 +66,13 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, onBack, data, setDa
         </p>
         {authorOptions.map((option) => (
           <label
-            key={option}
+            key={option.value}
             style={{
               display: 'block',
               padding: '0.75rem',
               marginBottom: '0.5rem',
-              backgroundColor: perceivedAuthor === option ? '#e3f2fd' : 'white',
-              border: `1px solid ${perceivedAuthor === option ? '#2196f3' : '#ddd'}`,
+              backgroundColor: perceivedAuthor === option.value ? '#e3f2fd' : 'white',
+              border: `1px solid ${perceivedAuthor === option.value ? '#2196f3' : '#ddd'}`,
               borderRadius: '4px',
               cursor: 'pointer'
             }}
@@ -79,12 +80,12 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, onBack, data, setDa
             <input
               type="radio"
               name="perceivedAuthor"
-              value={option}
-              checked={perceivedAuthor === option}
+              value={option.value}
+              checked={perceivedAuthor === option.value}
               onChange={(e) => setPerceivedAuthor(e.target.value)}
               style={{ marginRight: '8px' }}
             />
-            {option}
+            {option.label}
           </label>
         ))}
       </div>
@@ -101,13 +102,13 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, onBack, data, setDa
         </p>
         {disclosureOptions.map((option) => (
           <label
-            key={option}
+            key={option.value}
             style={{
               display: 'block',
               padding: '0.75rem',
               marginBottom: '0.5rem',
-              backgroundColor: noticedDisclosure === option ? '#e3f2fd' : 'white',
-              border: `1px solid ${noticedDisclosure === option ? '#2196f3' : '#ddd'}`,
+              backgroundColor: noticedDisclosure === option.value ? '#e3f2fd' : 'white',
+              border: `1px solid ${noticedDisclosure === option.value ? '#2196f3' : '#ddd'}`,
               borderRadius: '4px',
               cursor: 'pointer'
             }}
@@ -115,12 +116,12 @@ const ManipulationChecks: React.FC<ScreenProps> = ({ onNext, onBack, data, setDa
             <input
               type="radio"
               name="noticedDisclosure"
-              value={option}
-              checked={noticedDisclosure === option}
+              value={option.value}
+              checked={noticedDisclosure === option.value}
               onChange={(e) => setNoticedDisclosure(e.target.value)}
               style={{ marginRight: '8px' }}
             />
-            {option}
+            {option.label}
           </label>
         ))}
       </div>

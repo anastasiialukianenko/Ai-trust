@@ -79,6 +79,13 @@ export interface ExperimentData {
   demographics?: Demographics;
   qc?: QC;
   completionTime?: number;
+  // Backend required fields (computed before submission)
+  conditionString?: string; // 'Human' | 'AI_noDisc' | 'AI_Disc'
+  Ad_AI_noDisc?: number; // 0/1 dummy: 1 = AI-created, no disclosure
+  Ad_AI_Disc?: number; // 0/1 dummy: 1 = AI-created, with disclosure
+  exposure_time_ms?: number; // Time spent on stimulus screen
+  completion_time_ms?: number; // Total time to complete experiment
+  device_type?: string; // 'Desktop' | 'Mobile' | 'Tablet'
   [key: string]: any;
 }
 
